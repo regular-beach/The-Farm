@@ -1,0 +1,25 @@
+{
+  "name": "the-farm",
+  "version": "1.0.0",
+  "description": "Beth's website with tailwind",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:css": "npx tailwindcss -i ./app/static/styles/input.css -o ./app/static/styles/base.css --watch"
+  },
+  "keywords": [
+    "flask",
+    "tailwind",
+    "html",
+    "css"
+  ],
+  "author": "new-graphics-2000",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49"
+  }
+}
