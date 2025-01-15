@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" id="top">
+<head>
+ 
+  <link href="{{ url_for('static', filename='styles/home.css') }}" rel="stylesheet" />
+  <link href="{{ url_for('static', filename='styles/base.css') }}" rel="stylesheet" />
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://use.typekit.net/upe0xgu.css">
+    <title>{% block title %}The Farm/Home{% endblock %}</title>
+    </head>
+
+    {% block main %}
+
+<body>
+
+    <div class="hero-container">
+        <img class="hero" src="{{ url_for('static', filename='/img/history/IMG_2267.jpg') }}" alt="History Image">
+    </div>
+    
+    
+     <a class="nav-title" href="{{ url_for('menu') }}">The Farm<a>
+    
+    <div class="nav">
+        <div><a href="{{ url_for('history') }}">History & Preservation</a></div>
+        
+        <div><a href="{{ url_for('preserving') }}">Preserving & Canning</a></div>
+
+        <div><a href="{{ url_for('vinyard') }}">Vinyard</a></div>
+        
+        <div><a href="{{ url_for('education') }}">Education</a></div>
+
+        <div><a href="{{ url_for('hospitality') }}">Hospitality</a></div>
+
+        <div><a href="{{ url_for('contact') }}">Contact</a></div>
+    
+</div>
+
+</div>
+
+
+
+    
+        <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+
+</body>
+
+    {% endblock %}

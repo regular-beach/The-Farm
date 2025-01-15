@@ -1,0 +1,39 @@
+html, body {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    background-color: black;
+}
+.hero-container {
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    z-index: -1;
+    top: 0;
+    width: 100%;
+    position: relative;
+    
+
+}
+
+.hero {
+    width: 100%; 
+    height: auto; 
+    display: block;
+}
+
+.pagetitle{
+    font-family: "adobe-garamond-pro", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 4.5em;
+    padding-top: 12vh;
+    color: white;
+    padding-left: 4em;
+}
+
+/* Packery css*/
+.grid-item { width: 25%; }
+.grid-item--width2 { width: 50%; }

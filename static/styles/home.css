@@ -1,0 +1,58 @@
+/* Container to hold the nav and nav-title inline */
+html, body {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    background-color: black;
+    z-index: -2;
+}
+
+
+.hero-container {
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    z-index: 0;
+    top: 0;
+    width: 100%;
+    position: relative;
+    
+
+}
+
+.hero {
+    width: 100%; 
+    height: auto; 
+    display: block;
+}
+
+
+.nav {
+    font-family: "adobe-garamond-pro", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 3em;
+    padding-top: 12vh;
+    color: white;
+    transition: color 0.3s ease;
+    text-decoration: none;
+    line-height: 1em;
+    text-align: left; 
+    padding-left: 50px;
+    padding-bottom: 30%;
+}
+
+
+a {
+    text-decoration: none;
+   color: white;
+}
+
+.nav a:hover {
+    color: rgb(255, 0, 0);
+    transition: color 0.3s ease;
+}
+
+

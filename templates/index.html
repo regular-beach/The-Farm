@@ -12,16 +12,19 @@
 
 
 
-
-
-
-
-
-
 {% block main %}
+
 <body>
-<h1>The Farm</h1>
+  
+  <div>
+    <img class="hero"src="{{ url_for('static', filename='img/opening_hero.jpg') }}">
+  </div>
+
+  <a class="title" href="{{ url_for('menu') }}">The Farm</a>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
+
 {% endblock %}
 
 

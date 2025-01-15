@@ -1,0 +1,31 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', filename='styles/history.css') }}" rel="stylesheet" />
+    <title>History</title>
+</head>
+
+
+<body>
+{% include 'navigation.html' %}
+
+<div class="pagetitle">History & Preservation</div>
+
+<div class="grid">
+    <div class="grid-item"> <img src="{{ url_for('static', filename='/img/history/IMG_1778.jpg') }}"></div>
+    <div class="grid-item grid-item--width2"> <img src="{{ url_for('static', filename='/img/history/IMG_0208.jpg') }}"></div>
+    <div class="grid-item grid-item--width2"> <img src="{{ url_for('static', filename='/img/history/IMG_2267.jpg') }}"></div>
+    <div class="grid-item">...</div>
+    ...
+  </div>
+
+
+ <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+<script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+<script src="/path/to/packery.pkgd.min.js"></script>
+</body>
+</html>
