@@ -21,6 +21,7 @@ def menu():
 def history():
     return render_template('history.html')
 
+
 @app.route('/preserving')
 def preserving():
     return render_template('preserving.html')

@@ -19,8 +19,16 @@ var pckry = new Packery(grid, {
   gutter: 10 // Optional: spacing between items
 });
 
-// layout Packery after each image loads
-imagesLoaded(grid).on('progress', function () {
-  pckry.layout();
-});
 
+document.addEventListener('DOMContentLoaded', () => {
+  var grid = document.querySelector('.grid');
+  var pckry = new Packery(grid, {
+      itemSelector: '.grid-item',
+      gutter: 10 // Optional: spacing between items
+  });
+
+  // Layout Packery after each image loads
+  imagesLoaded(grid).on('progress', function () {
+      pckry.layout();
+  });
+});

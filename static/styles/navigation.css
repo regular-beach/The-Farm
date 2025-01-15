@@ -1,8 +1,10 @@
 #block {
     position: absolute;
     width: 100%;
-    z-index: 1000%;
+    z-index: 5;
     display: none;
+    mix-blend-mode: difference;
+
 }
 
 
@@ -13,9 +15,11 @@
     font-size: 1.7em;
     margin-left: 15px;
     transition: color 0.3s ease;
-    text-decoration: none;
     line-height: 1em;
-    text-align: left; 
+    text-align: left;
+    display: block;
+    position: absolute;
+    margin-top: 4em;
 }
 
 .nav a:hover {
@@ -36,9 +40,9 @@
     text-decoration: none;
     padding-left: 15px;
     margin-top: 2.5em;
-    position: relative;
-    display: flex;
+    position: absolute;
     mix-blend-mode: difference;
+    z-index: 6;
 }
 
 a {
