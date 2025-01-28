@@ -1,31 +1,26 @@
-/* Container to hold the nav and nav-title inline */
 html, body {
-    margin: 0; /* Remove default margin */
-    padding: 0; /* Remove default padding */
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow-x: hidden; /* Prevent horizontal scrolling */
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%; 
+    overflow-x: hidden;
     background-color: black;
     z-index: -2;
 }
 
 
 .hero-container {
-    background-repeat: no-repeat;
-    margin: 0;
-    padding: 0;
-    z-index: 0;
-    top: 0;
     width: 100%;
     position: relative;
-    
 
 }
 
 .hero {
-    width: 100%; 
-    height: auto; 
+    width: 100vw; 
+    height: 100vh; 
+    object-fit: cover;
     display: block;
+    z-index: 1;
 }
 
 
@@ -34,16 +29,43 @@ html, body {
     font-weight: 400;
     font-style: normal;
     font-size: 3em;
-    padding-top: 12vh;
+    padding-top: 3.5em;
     color: white;
     transition: color 0.3s ease;
     text-decoration: none;
-    line-height: 1em;
+    line-height: 1.3em;
     text-align: left; 
     padding-left: 50px;
-    padding-bottom: 30%;
+    z-index: 10;
+    top: 0;    
+    position: absolute;
 }
 
+.about {
+    padding-left: 300px;
+    width: 50%;
+    z-index: 5;
+    
+    margin: 10px;
+    display: block;
+    font-family: "adobe-garamond-pro", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.2em;
+    color: white;
+}
+
+.story{     
+    font-family: "adobe-garamond-pro", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 4.5em;
+    color: white;
+    padding-left: 50px;
+    padding-top: 1.5em;
+    line-height: 1.3em;
+    width: 70%; 
+}
 
 a {
     text-decoration: none;

@@ -1,0 +1,32 @@
+body{
+    margin: 0;
+    padding:0;
+}
+
+.beth {
+    padding-top: 18em;
+    margin-left: 300px;
+    display: flex;
+    width: 100%
+}
+
+img {
+    width: 40%;
+    height: auto;
+    padding-right: 40px;
+    padding-top: 10px;
+    object-fit: cover;
+    margin-left: 300px;
+}
+
+h1 {
+    width: 100%;
+    padding-top: 0;
+    font-size: 1em;
+    font-family: "adobe-garamond-pro", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.5em;
+    color: white;
+    padding-right: 40px;
+}

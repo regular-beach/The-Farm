@@ -1,0 +1,20 @@
+
+footer{
+padding-left: 15px;
+padding-right: 15px;
+margin-bottom: 15px;
+padding-top: 5%;
+
+}
+
+
+.footmenu{
+    font-family: "adobe-garamond-pro", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.5em;
+    color: white;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}

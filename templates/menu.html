@@ -12,39 +12,69 @@
     <title>{% block title %}The Farm/Home{% endblock %}</title>
     </head>
 
-    {% block main %}
-
 <body>
+    <div class=about>The Farm catalogues the work of Beth Nelson and her multidisiplinary role managing and restoring one historic property in Sonoma County, California.</div>
 
     <div class="hero-container">
-        <img class="hero" src="{{ url_for('static', filename='/img/history/IMG_2267.jpg') }}" alt="History Image">
+        <div class="nav">
+            <div><a href="{{ url_for('history') }}">History & Restoration</a></div>
+            <div><a href="{{ url_for('preserving') }}">Preserving Food</a></div>
+            <div><a href="{{ url_for('vineyard') }}">Vineyard</a></div>       
+            <div><a href="{{ url_for('hospitality') }}">Hospitality & Education</a></div>  
+    </div>
+        <img class="hero" src="{{ url_for('static', filename='/img/hero/MENU_HERO_CROP.jpg') }}" alt="History Image">
+
     </div>
     
+    <a class="nav-title" href="{{ url_for('menu') }}">The Farm</a>
+
+
+
+<div class="story">We were riding in my father’s pickup truck…</div>
+<div class="text">
+    <p>on our way to the nearest library. There were no books where I grew up; you had to 
+
+    travel to find books. I said to my father, “When I grow up I want to live where houses 
     
-     <a class="nav-title" href="{{ url_for('menu') }}">The Farm<a>
+    are attached to each other.” I realize now I was longing for something  beyond our 
     
-    <div class="nav">
-        <div><a href="{{ url_for('history') }}">History & Preservation</a></div>
-        
-        <div><a href="{{ url_for('preserving') }}">Preserving & Canning</a></div>
-
-        <div><a href="{{ url_for('vinyard') }}">Vinyard</a></div>
-        
-        <div><a href="{{ url_for('education') }}">Education</a></div>
-
-        <div><a href="{{ url_for('hospitality') }}">Hospitality</a></div>
-
-        <div><a href="{{ url_for('contact') }}">Contact</a></div>
+    enormous farm. Isolated, in Appalachia, I had imagined other worlds. Perhaps it was 
     
-</div>
-
-</div>
-
-
-
+    those wide open fields and farmland, feral and free, that allowed my ideas to blossom, 
     
-        <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    along with the books that my father encouraged.</p>
+    
+    
+    <p>I traveled first to California and eventually made my way to London. And it was
+    
+    there I found those houses “attached to each other,” and eleven-million people to keep 
+    
+    me company, just like I had dreamed of. </p>
+    
+    
+<p>Peripatetic, an artist and lover of life, I lived abroad for almost two decades. Like a hard-
+    
+    won badge of honor, I cherished my Artist and Writer’s Visa. Europe was good to me.  
+    
+    I had followed my heart.</p>
+    
+    
+<p>Years later, while working for a client in Northern California, I was asked to take a look 
+    
+    at their farm. An 1880’s vernacular Italian homestead, a heritage dry-farm vineyard, an 
+    
+    abandoned place, a farm gone fallow. Little did I know I was to follow the tradition of my 
+    
+    family and become a fifth generation farmer.</p>
+    
+<p>This is the story of a farm’s resurrection. </p>
+  
+<p>  “ When the past meets the future, you know you are in the right place.”</p>
+    </div>
 
+ <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+
+<div>
+ {% include 'footer.html' %} </div>
 </body>
-
-    {% endblock %}
+</html>
