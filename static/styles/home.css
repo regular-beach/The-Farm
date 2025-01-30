@@ -35,7 +35,7 @@ html, body {
     text-decoration: none;
     line-height: 1.3em;
     text-align: left; 
-    padding-left: 50px;
+    padding-left: 15px;
     z-index: 10;
     top: 0;    
     position: absolute;
@@ -45,7 +45,6 @@ html, body {
     padding-left: 300px;
     width: 50%;
     z-index: 5;
-    
     margin: 10px;
     display: block;
     font-family: "adobe-garamond-pro", serif;
@@ -53,6 +52,26 @@ html, body {
     font-style: normal;
     font-size: 1.2em;
     color: white;
+
+}
+
+.main {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 1s ease-in-out, visibility 0s ease 1s;
+}
+
+.main-visible {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+    z-index: 100;
+}
+
+body.visited.main {
+    visibility: visible;
+    opacity: 1;
+    transition: none;
 }
 
 .story{     

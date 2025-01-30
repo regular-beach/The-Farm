@@ -13,25 +13,70 @@
     </head>
 
 <body>
-    <div class=about>The Farm catalogues the work of Beth Nelson and her multidisiplinary role managing and restoring one historic property in Sonoma County, California.</div>
-
-    <div class="hero-container">
-        <div class="nav">
-            <div><a href="{{ url_for('history') }}">History & Restoration</a></div>
-            <div><a href="{{ url_for('preserving') }}">Preserving Food</a></div>
-            <div><a href="{{ url_for('vineyard') }}">Vineyard</a></div>       
-            <div><a href="{{ url_for('hospitality') }}">Hospitality & Education</a></div>  
-    </div>
-        <img class="hero" src="{{ url_for('static', filename='/img/hero/MENU_HERO_CROP.jpg') }}" alt="History Image">
-
-    </div>
-    
     <a class="nav-title" href="{{ url_for('menu') }}">The Farm</a>
 
-
-
-<div class="story">We were riding in my father’s pickup truck…</div>
-<div class="text">
+    <div id="typingText" class="about"></div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const text = "The Farm catalogues the work of Beth Nelson and her multidisciplinary role managing and restoring one historic property in Sonoma County, California.";
+            let index = 0;
+            const typingTextElement = document.getElementById("typingText");
+            const mainContent = document.getElementById("mainContent");
+        
+            function typeText() {
+                if (index < text.length) {
+                    typingTextElement.textContent += text.charAt(index);
+                    index++;
+                    setTimeout(typeText, 20); // Adjust speed here
+                } else {
+                    typingTextElement.style.borderRight = "none";
+                    showMain(); // Show the main content
+                }
+            }
+        
+            function showMain() {
+                // Add a small delay
+                setTimeout(() => {
+                    if (mainContent) {
+                        mainContent.classList.add("main-visible"); // Make main content visible
+                    }
+                }, 500); // Adjust timing
+            }
+        
+            window.addEventListener("load", function() {
+                if (!sessionStorage.getItem("visited")) {
+                    // First visit, trigger typing animation
+                    typeText();
+                    sessionStorage.setItem("visited", "true"); // Mark visited
+                } else {
+                    // Already visited, just show the text and main content
+                    typingTextElement.textContent = text;
+                    typingTextElement.style.borderRight = "none";
+                    mainContent.style.visibility = "visible";
+                    mainContent.style.opacity = "1";
+                    mainContent.style.transition = "none";
+                    showMain();
+                }
+            });
+        });
+    </script>
+    
+    <main class="main" id="mainContent">
+        <div class="hero-container">
+            <div class="nav">
+                <div><a href="{{ url_for('history') }}">History & Restoration</a></div>
+                <div><a href="{{ url_for('preserving') }}">Preserving Food</a></div>
+                <div><a href="{{ url_for('vineyard') }}">Vineyard</a></div>
+                <div><a href="{{ url_for('hospitality') }}">Hospitality & Education</a></div>       
+            </div>
+            <img class="hero" src="{{ url_for('static', filename='/img/hero/MENU_HERO_CROP.jpg') }}" alt="History Image">
+        </div>
+    
+        <div class="story">
+            We were riding in my father’s pickup truck…
+        </div>
+        <div class="text">
     <p>on our way to the nearest library. There were no books where I grew up; you had to 
 
     travel to find books. I said to my father, “When I grow up I want to live where houses 
@@ -69,12 +114,13 @@
     
 <p>This is the story of a farm’s resurrection. </p>
   
-<p>  “ When the past meets the future, you know you are in the right place.”</p>
+<p>  “When the past meets the future, you know you are in the right place.”</p>
     </div>
 
- <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+ 
 
 <div>
  {% include 'footer.html' %} </div>
+ </main>
 </body>
 </html>

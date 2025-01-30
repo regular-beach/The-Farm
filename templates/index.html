@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="https://use.typekit.net/upe0xgu.css">
     <title>{% block title %}The Farm{% endblock %}</title>
-
+</head>
 
 
 
@@ -18,10 +18,17 @@
     <img class="hero"src="{{ url_for('static', filename='img/hero/opening_hero.jpg') }}">
   </div>
 
-  <a class="title" href="{{ url_for('menu') }}">The Farm</a>
 
-  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+  <a id="expandingText" class="hidden-text" href="{{ url_for('menu') }}">The Farm</a>
+
+  <script>
+    window.addEventListener("load" , function () {
+      document.getElementById("expandingText").classList.add("visible-text");
+    });
+  </script>
 </body>
+</html>
 
 
 
