@@ -3,15 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>History</title>
+    <title>Preserving Food</title>
     <link href="{{ url_for('static', filename='styles/base.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='styles/catagories/preserving.css') }}" rel="stylesheet" />
 </head>
 
 
 <body>
 
     {% include 'navigation.html' %}
-    <div class="pagetitle">Preserving Food</div>
 
+    <div class="hero-container">
+    <div class="pagetitle">Preserving Food</div>
+    <img class="hero" src="{{ url_for('static', filename='/img/hero/HERO2.jpg') }}" alt="Preserving Food Image">
+</div>
+
+<div class="grid">
+    <div class="grid-item">
+        <img src="{{ url_for('static', filename='/img/preserving/01.jpg') }}">
+    </div>
+    <div class="grid-item">
+        <img src="{{ url_for('static', filename='/img/preserving/02.jpg') }}">
+    </div>
+    <div class="grid-item">
+        <img src="{{ url_for('static', filename='/img/preserving/03.jpg') }}">
+    </div>
+    <div class="grid-item">
+        <img src="{{ url_for('static', filename='/img/preserving/HERO1.jpg') }}">
+    </div>
+    <div class="grid-item">
+        <img src="{{ url_for('static', filename='/img/preserving/IMG_0437.jpg') }}">
+    </div>
+    <div class="grid-item">
+        <img src="{{ url_for('static', filename='/img/preserving/IMG_0507.jpg') }}">
+    </div>
+    <div class="grid-item">
+        <img src="{{ url_for('static', filename='/img/preserving/IMG_4144.jpg') }}">
+    </div>
+    <div class="grid-item">
+        <img src="{{ url_for('static', filename='/img/preserving/IMG_5093.jpg') }}">
+    </div>
+    <div class="grid-item">
+        <img src="{{ url_for('static', filename='/img/preserving/IMG_5115.jpg') }}">
+    </div>
+    <div class="grid-item">
+        <img src="{{ url_for('static', filename='/img/preserving/IMG_6457.jpg') }}">
+    </div>
+    <div class="grid-item">
+        <img src="{{ url_for('static', filename='/img/preserving/IMG_6645.jpg') }}">
+    </div>
+    <div class="grid-item">
+        <img src="{{ url_for('static', filename='/img/preserving/IMG_6931.jpg') }}">
+    </div>
+    <div class="grid-item">
+        <img src="{{ url_for('static', filename='/img/preserving/IMG_6997.jpg') }}">
+    </div>
+    <div class="grid-item">
+        <img src="{{ url_for('static', filename='/img/preserving/IMG_7085.jpg') }}">
+    </div>
+    <div class="grid-item">
+        <img src="{{ url_for('static', filename='/img/preserving/IMG_7375.jpg') }}">
+    </div>
+    <div class="grid-item">
+        <img src="{{ url_for('static', filename='/img/preserving/IMG_7472.jpg') }}">
+    </div>
+    <div class="grid-item">
+        <img src="{{ url_for('static', filename='/img/preserving/IMG_7864.jpg') }}">
+    </div>
+    <div class="grid-item">
+        <img src="{{ url_for('static', filename='/img/preserving/IMG_7949.jpg') }}">
+    </div>
+    <div class="grid-item">
+        <img src="{{ url_for('static', filename='/img/preserving/IMG_8216.jpg') }}">
+    </div>
+    <div class="grid-item">
+        <img src="{{ url_for('static', filename='/img/preserving/IMG_8270.jpg') }}">
+    </div>
+    <div class="grid-item">
+        <img src="{{ url_for('static', filename='/img/preserving/IMG_8291.jpg') }}">
+    </div>
+    <div class="grid-item">
+        <img src="{{ url_for('static', filename='/img/preserving/IMG_8300.jpg') }}">
+    </div>
+    <div class="grid-item">
+        <img src="{{ url_for('static', filename='/img/preserving/IMG_8681.jpg') }}">
+    </div>
+    <div class="grid-item">
+        <img src="{{ url_for('static', filename='/img/preserving/IMG_8716.jpg') }}">
+    </div>
+    <div class="grid-item">
+        <img src="{{ url_for('static', filename='/img/preserving/IMG_9268.jpg') }}">
+    </div>
+    </div>
+</div>
+
+{% include 'footer.html' %}
+
+<script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+<script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+<script src="https://unpkg.com/packery@2.1.2/dist/packery.pkgd.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const grid = document.querySelector('.grid');
+        const pckry = new Packery(grid, {
+            itemSelector: '.grid-item',
+            percentPosition: true
+        });
+
+        // Ensure layout happens after images are loaded
+        imagesLoaded(grid).on('progress', function () {
+            pckry.layout();
+        });
+    });
+</script>
 </body>
 </html>

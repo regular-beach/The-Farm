@@ -19,6 +19,25 @@ html, body {
 
 }
 
+.hero{
+  width: 100vw;
+  height: auto;
+  object-fit: cover;
+  z-index: -1;
+  display: block;
+}
+
+.text {
+  position: absolute;
+  z-index: 1;
+  padding-top: 20%;
+}
+
+.history-container{
+  position: relative;
+  width: 100vw;
+}
+
 .grid {
   position: relative; /* Required for Packery */
   width: 100%; /* Full width of the container */
