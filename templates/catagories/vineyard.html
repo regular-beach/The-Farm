@@ -5,13 +5,102 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vineyard</title>
     <link href="{{ url_for('static', filename='styles/base.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='styles/catagories/catagory.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='styles/catagories/vineyard.css') }}" rel="stylesheet" />
 </head>
 
 
 <body>
 
     {% include 'navigation.html' %}
-    <div class="pagetitle">Vineyard</div>
 
+
+<div class="gridtitle">
+    <div class="pagetitle">Vineyard</div>
+    <div class="grid">
+        <div class="grid-item wide">
+            <img src="{{ url_for('static', filename='/img/vineyard/IMG_4189.jpg') }}">
+        </div> 
+        <div class="grid-item">
+            <img src="{{ url_for('static', filename='/img/vineyard/IMG_0134.jpg') }}">
+        </div>
+        <div class="grid-item">
+            <img src="{{ url_for('static', filename='/img/vineyard/IMG_0275.jpg') }}">
+        </div>
+        <div class="grid-item">
+            <img src="{{ url_for('static', filename='/img/vineyard/IMG_0553.png') }}">
+        </div>
+        <div class="grid-item">
+            <img src="{{ url_for('static', filename='/img/vineyard/IMG_1423.jpg') }}">
+        </div>       
+        <div class="grid-item">
+            <img src="{{ url_for('static', filename='/img/vineyard/IMG_3443.jpg') }}">
+        </div> 
+        <div class="grid-item">
+            <video autoplay loop muted>
+                <source src="{{ url_for('static', filename='/img/vineyard/signpainter.mp4') }}" type="video/mp4">
+            </video>
+        </div>      
+        <div class="grid-item">
+            <img src="{{ url_for('static', filename='/img/vineyard/IMG_4114.jpg') }}">
+        </div> 
+            
+        <div class="grid-item">
+            <img src="{{ url_for('static', filename='/img/vineyard/IMG_6699.jpg') }}">
+        </div>      
+         <div class="grid-item wide">
+            <img src="{{ url_for('static', filename='/img/vineyard/IMG_8177.jpg') }}">
+        </div>    
+         <div class="grid-item">
+             <img src="{{ url_for('static', filename='/img/vineyard/IMG_8230.jpg') }}">
+        </div>
+        <div class="grid-item">
+            <video autoplay loop muted>
+                <source src="{{ url_for('static', filename='/img/vineyard/crane.mp4') }}" type="video/mp4">
+            </video>
+            </div>
+        <div class="grid-item">
+             <img src="{{ url_for('static', filename='/img/vineyard/IMG_8258.jpg') }}">
+        </div>
+        <div class="grid-item wide">
+            <img src="{{ url_for('static', filename='/img/vineyard/IMG_1046.jpg') }}">
+        </div> 
+        <div class="grid-item">
+            <img src="{{ url_for('static', filename='/img/vineyard/IMG_8291.jpg') }}">
+        </div>
+        <div class="grid-item">
+            <video autoplay loop muted>
+                <source src="{{ url_for('static', filename='/img/vineyard/harvest.mp4') }}" type="video/mp4">
+            </video>
+            </div>
+       <div class="grid-item">
+            <img src="{{ url_for('static', filename='/img/vineyard/IMG_8716.jpg') }}">
+        </div>
+        <div class="grid-item">
+            <video autoplay loop muted>
+                <source src="{{ url_for('static', filename='/img/vineyard/harvest2.mp4') }}" type="video/mp4">
+            </video>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+<script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+<script src="https://unpkg.com/packery@2.1.2/dist/packery.pkgd.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const grid = document.querySelector('.grid');
+        const pckry = new Packery(grid, {
+            itemSelector: '.grid-item',
+            percentPosition: true
+        });
+
+        // Ensure layout happens after images are loaded
+        imagesLoaded(grid).on('progress', function () {
+            pckry.layout();
+        });
+    });
+</script>
+
+{% include 'footer.html' %}
 </body>
 </html>

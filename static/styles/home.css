@@ -96,4 +96,42 @@ a {
     transition: color 0.3s ease;
 }
 
+.text {
+    padding-left: 50px;
+    width: 65%;
+    color: white;
+  }
+  
+  p {
+    font-family: "adobe-garamond-pro", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.5em;
+    line-height: 1.3em;
+    color: white;
+    margin-bottom: 1.5em
+  }
 
+@media (max-width: 640px) {
+    .nav {
+        font-size: 2em;
+    }
+
+    .about {
+        flex-direction: column; /* Stack items */
+        align-items: left; /* Center align content */
+        margin-top: 75px; /* Ensure space below header */
+        padding-left: 15px;
+        width: 80%;
+    }
+
+    .story {
+        font-size: 2em;
+    }
+    .text{
+        width: 80%
+    }
+    p {
+        font-size: 1.2em;
+    }
+}

@@ -6,6 +6,7 @@
     <title>Preserving Food</title>
     <link href="{{ url_for('static', filename='styles/base.css') }}" rel="stylesheet" />
     <link href="{{ url_for('static', filename='styles/catagories/preserving.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='styles/catagories/catagory.css') }}" rel="stylesheet" />
 </head>
 
 
@@ -22,9 +23,7 @@
     <div class="grid-item">
         <img src="{{ url_for('static', filename='/img/preserving/01.jpg') }}">
     </div>
-    <div class="grid-item">
-        <img src="{{ url_for('static', filename='/img/preserving/02.jpg') }}">
-    </div>
+
     <div class="grid-item">
         <img src="{{ url_for('static', filename='/img/preserving/03.jpg') }}">
     </div>
@@ -32,7 +31,15 @@
         <img src="{{ url_for('static', filename='/img/preserving/HERO1.jpg') }}">
     </div>
     <div class="grid-item">
+        <video autoplay loop muted>
+            <source src="{{ url_for('static', filename='/img/preserving/preserving.mp4') }}" type="video/mp4">
+        </video>
+    </div>
+    <div class="grid-item">
         <img src="{{ url_for('static', filename='/img/preserving/IMG_0437.jpg') }}">
+    </div>
+    <div class="grid-item">
+        <img src="{{ url_for('static', filename='/img/preserving/02.jpg') }}">
     </div>
     <div class="grid-item">
         <img src="{{ url_for('static', filename='/img/preserving/IMG_0507.jpg') }}">
@@ -48,6 +55,11 @@
     </div>
     <div class="grid-item">
         <img src="{{ url_for('static', filename='/img/preserving/IMG_6457.jpg') }}">
+    </div>
+    <div class="grid-item">
+        <video autoplay loop muted>
+            <source src="{{ url_for('static', filename='/img/preserving/walnutdye.mp4') }}" type="video/mp4">
+        </video>
     </div>
     <div class="grid-item">
         <img src="{{ url_for('static', filename='/img/preserving/IMG_6645.jpg') }}">

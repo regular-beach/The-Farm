@@ -24,32 +24,4 @@ html, body {
   z-index: 6;
 }
 
-.pagetitle {
-  font-family: "adobe-garamond-pro", serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 4.5em;
-  padding-top: 30vh;
-  color: white;
-  padding-left: 300px;
-  line-height: 1em;
-  
-}
 
-
-
-.text {
-  padding-left: 50px;
-  width: 65%;
-  color: white;
-}
-
-p {
-  font-family: "adobe-garamond-pro", serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 1.5em;
-  line-height: 1.3em;
-  color: white;
-  margin-bottom: 1.5em
-}

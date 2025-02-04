@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{{ url_for('static', filename='styles/catagories/history.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='styles/catagories/catagory.css') }}" rel="stylesheet" />
     <title>History & Restoration</title>
 </head>
 <body>
@@ -109,6 +110,11 @@
         <img src="{{ url_for('static', filename='/img/history/IMG_3263.jpg') }}">
     </div>
     <div class="grid-item">
+        <video autoplay loop muted>
+            <source src="{{ url_for('static', filename='/img/history/farmscope.mp4') }}" type="video/mp4">
+        </video>
+        </div>
+    <div class="grid-item">
         <img src="{{ url_for('static', filename='/img/history/IMG_0035.jpg') }}">
     </div>
     <div class="grid-item">
@@ -119,8 +125,17 @@
     </div>
     <!--interior images-->
     <div class="grid-item">
+        <video autoplay loop muted>
+            <source src="{{ url_for('static', filename='/img/history/interior/canoehanging.mp4') }}" type="video/mp4">
+        </video>
+        </div>
+    <div class="grid-item">
         <img src="{{ url_for('static', filename='/img/history/interior/IMG_1055.jpg') }}">
     </div>
+    <div class="grid-item">
+        <video autoplay loop muted>
+            <source src="{{ url_for('static', filename='/img/history/foundation.mp4') }}" type="video/mp4">
+        </video>
     <div class="grid-item">
         <img src="{{ url_for('static', filename='/img/history/interior/IMG_1067.jpg') }}">
     </div>
@@ -128,8 +143,18 @@
         <img src="{{ url_for('static', filename='/img/history/interior/IMG_1068.jpg') }}">
     </div>
     <div class="grid-item">
+        <video autoplay loop muted>
+            <source src="{{ url_for('static', filename='/img/history/interior/barnfloor.mp4') }}" type="video/mp4">
+        </video>
+        </div>
+    <div class="grid-item">
         <img src="{{ url_for('static', filename='/img/history/interior/IMG_1178.jpg') }}">
     </div>
+    <div class="grid-item">
+        <video autoplay loop muted>
+            <source src="{{ url_for('static', filename='/img/history/interior/building3.mp4') }}" type="video/mp4">
+        </video>
+        </div>
     <div class="grid-item">
         <img src="{{ url_for('static', filename='/img/history/interior/IMG_1763.jpg') }}">
     </div>
@@ -146,6 +171,9 @@
         <img src="{{ url_for('static', filename='/img/history/interior/IMG_4884.jpg') }}">
     </div>
     <div class="grid-item">
+        <img src="{{ url_for('static', filename='/img/history/interior/IMG_0922.jpg') }}">
+    </div>
+    <div class="grid-item">
         <img src="{{ url_for('static', filename='/img/history/interior/IMG_MENUpage.jpg') }}">
     </div>
     <div class="grid-item">
@@ -160,6 +188,11 @@
     </div>
     <div class="grid-item">
         <img src="{{ url_for('static', filename='/img/history/before/IMG_3174.jpg') }}">
+    </div>
+    <div class="grid-item">
+        <video autoplay loop muted>
+            <source src="{{ url_for('static', filename='/img/history/before/oldbarntreetrimming.mp4') }}" type="video/mp4">
+        </video>
     </div>
     <div class="grid-item">
         <img src="{{ url_for('static', filename='/img/history/before/IMG_3276.jpg') }}">
@@ -201,6 +234,37 @@
             pckry.layout();
         });
     });
+
+    document.addEventListener("DOMContentLoaded", function() {
+    const pageTitle = document.querySelector(".pagetitle");
+    const subTitle = document.querySelector(".sub");
+
+    let lastScrollTop = window.scrollY;
+
+    window.addEventListener("scroll", function() {
+        let currentScroll = window.scrollY;
+
+        if (currentScroll === 0) {
+            // At the top of the page, fade in
+            pageTitle.style.opacity = "1";
+            subTitle.style.opacity = "1";
+            pageTitle.style.transform = "translateY(0)";
+            subTitle.style.transform = "translateY(0)";
+        } else if (currentScroll > lastScrollTop) {
+            // Scrolling down, keep them visible
+        } else {
+            // Scrolling up, fade out
+            pageTitle.style.opacity = "0";
+            subTitle.style.opacity = "0";
+            pageTitle.style.transform = "translateY(-20px)";
+            subTitle.style.transform = "translateY(-20px)";
+        } 
+
+        lastScrollTop = currentScroll;
+    });
+});
+
+
 </script>
 
 </body>
