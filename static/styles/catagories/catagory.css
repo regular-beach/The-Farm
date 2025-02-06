@@ -35,4 +35,6 @@
 @media (min-width: 1920px) {.grid-item {width: 16.666%}}
 @media (min-width: 2240px) {.grid-item {width: 14.2857%}}
 
- 
+ @media (max-width: 800px) {
+  
+ }

@@ -15,19 +15,17 @@ html, body {
   font-size: 1.5em;
   color: white;
   padding-left: 200px;
-  position: fixed;
+  position: absolute;
   z-index: 1;
   top: 15em;
   
 
 }
-
-.hero{
-  width: 100vw;
-  height: auto;
-  object-fit: cover;
-  z-index: -1;
-  display: block;
+.history-container{
+  position: relative;
+  height: 300vh;
+  width: 100%;
+  overflow: visible;
 }
 
 .pagetitle {
@@ -39,18 +37,32 @@ html, body {
   color: white;
   padding-left: 200px;
   line-height: 1em;
-  position: fixed;
+  position: absolute;
   z-index: 1;
+  transition: opacity 1.5s ease-in-out;
+}
+.hero{
+  width: 100vw;
+  height: auto;
+  overflow: visible;
+  z-index: -1;
+  display: block;
+  top: 0;
 }
 
 .text {
-  padding-left: 50px;
+  padding-left: 200px;
   width: 65%;
   color: white;
   position: absolute;
   top: 25em;
+  transform: translateY(0);
 
 }
+
+
+
+
 
 .pagetitle, .sub {
   transition: opacity 0.4s ease, transform 0.4s ease;
@@ -60,16 +72,12 @@ p {
   font-family: "adobe-garamond-pro", serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 1.5em;
-  line-height: 1.3em;
+  font-size: 2em;
+ line-height: 1em;
   color: white;
   margin-bottom: 1.5em
 }
 
-.history-container{
-  position: relative;
-  width: 100vw;
-}
 
 .grid {
   position: relative; /* Required for Packery */
@@ -77,6 +85,7 @@ p {
   margin: 0 auto; /* Center the grid on the page */
   z-index: 0;
   min-height: 100vh;
+  padding-top: 15em;
 }
 
 .grid-item {
@@ -104,3 +113,47 @@ p {
 @media (min-width: 1600px) {.grid-item {width: 20%}}
 @media (min-width: 1920px) {.grid-item {width: 16.666%}}
 @media (min-width: 2240px) {.grid-item {width: 14.2857%}}
+
+
+@media (max-width: 850px) {
+  .pagetitle , .sub , .text {
+    padding-left: 15px;
+  }
+}
+@media (max-width: 640px) {
+  .pagetitle{
+    font-size: 3em;
+    padding-top: 6.4em;
+  }
+  .text{
+    width: 80%;
+  }
+  p{
+    font-size: 1.2em;
+  }
+}
+
+@media (max-width: 1100px) {
+ .grid {
+  padding-top: 30em;
+ }
+ p {
+  font-size: 1.5em;
+ }
+ .history-container {
+  height: 200vh;
+ }
+}
+
+ @media (max-width: 850px) {
+  .grid {
+   padding-top: 40em;
+  }
+ }
+
+
+ @media (max-width: 680px) {
+  .grid {
+   padding-top: 70em;
+  }
+ }

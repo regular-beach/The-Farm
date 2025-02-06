@@ -3,16 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>History</title>
+    <title>Hospitality & Education</title>
+    <link href="{{ url_for('static', filename='styles/catagories/hospitality.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='styles/catagories/catagory.css') }}" rel="stylesheet" />
     <link href="{{ url_for('static', filename='styles/base.css') }}" rel="stylesheet" />
-    <link href="{{ url_for('static', filename='styles/catagories/history.css') }}" rel="stylesheet" />
 </head>
 
 
 <body>
 
     {% include 'navigation.html' %}
+
+
+    <div class="gridtitle">
     <div class="pagetitle">Hospitality and Education</div>
+    <div class="grid">
+        <div class="grid-item wide">
+            <img src="{{ url_for('static', filename='/img/hospitality/IMG_1028.jpg') }}">
+        </div>
+        <div class="grid-item">
+            <img src="{{ url_for('static', filename='/img/hospitality/IMG_7700.jpg') }}">
+        </div>
+        <div class="grid-item">
+            <img src="{{ url_for('static', filename='/img/hospitality/IMG_7698.jpg') }}">
+        </div>
+        <div class="grid-item">
+            <img src="{{ url_for('static', filename='/img/hospitality/IMG_5665.jpg') }}">
+        </div>
+        <div class="grid-item wide">
+            <img src="{{ url_for('static', filename='/img/hospitality/IMG_2267.jpg') }}">
+        </div>
+        <div class="grid-item">
+            <img src="{{ url_for('static', filename='/img/hospitality/IMG_0404.jpg') }}">
+        </div>
+        <div class="grid-item">
+            <img src="{{ url_for('static', filename='/img/hospitality/IMG_0403.jpg') }}">
+        </div>
+    </div>
+    </div>
+
+        {% include 'footer.html' %}
+
+<script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+<script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+<script src="https://unpkg.com/packery@2.1.2/dist/packery.pkgd.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const grid = document.querySelector('.grid');
+        const pckry = new Packery(grid, {
+            itemSelector: '.grid-item',
+            percentPosition: true
+        });
+
+        // Ensure layout happens after images are loaded
+        imagesLoaded(grid).on('progress', function () {
+            pckry.layout();
+        });
+    });
+    </script>
 
 </body>
 </html>
