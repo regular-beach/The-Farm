@@ -32,3 +32,22 @@ h1 {
     padding-right: 15px;
     padding-bottom: 1.5em;
 }
+
+@media (max-width: 640px) {
+    .beth {
+        justify-content: left;
+        display: block;
+        overflow: none;
+        padding-right: 15px;
+        padding-top: 6em;
+    }
+    img {
+        width: 80vw;
+        height: auto;
+        padding-left: 0;
+}
+
+h1 {
+    width: 80vw;
+}
+}

@@ -1,5 +1,5 @@
 .gridtitle {
-    position: relative
+    position: relative;
 }
 
 .pagetitle {
@@ -36,18 +36,18 @@
   }
   
   .grid-item {
-    position: absolute; /* Packery handles item placement */
-    width: 100%; /* Fixed width for items */
-    height: auto; /* Height depends on image */
+    position: absolute; 
+    width: 100%;
+    height: auto;
     box-sizing: border-box;
     padding: 3px;
   }
 
   
   .grid-item img {
-    display: block; /* Prevent inline spacing around images */
-    width: 100%; /* Fit image to container width */
-    height: auto; /* Maintain aspect ratio */
+    display: block;
+    width: 100%;
+    height: auto;
   }
 
 @media (min-width: 640px)  {.grid-item {width: 50%}}
@@ -63,3 +63,10 @@
 @media (min-width: 1920px) {.wide {width: 33.332%}}
 @media (min-width: 2240px) {.grid-item {width: 14.2857%}}
 @media (min-width: 2240px) {.wide {width: 28.5714%}}
+
+@media (min-width: 640px)  {.grid-item.wide {width: 100%}}
+@media (min-width: 960px)  {.grid-item.wide {width: 66.666%}}
+@media (min-width: 1280px) {.grid-item.wide {width: 50%}}
+@media (min-width: 1600px) {.grid-item.wide {width: 40%}}
+@media (min-width: 1920px) {.grid-item.wide {width: 33.332%}}
+@media (min-width: 2240px) {.grid-item.wide {width: 28.5714%}}
