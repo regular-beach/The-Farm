@@ -80,7 +80,7 @@
         <img src="{{ url_for('static', filename='/img/history/IMG_3263.jpg') }}">
     </div>
     <div class="grid-item">
-        <video autoplay loop muted>
+        <video autoplay loop muted playsinline>
             <source src="{{ url_for('static', filename='/img/history/farmscope.mp4') }}" type="video/mp4">
         </video>
         </div>
@@ -95,7 +95,7 @@
     </div>
     <!--interior images-->
     <div class="grid-item">
-        <video autoplay loop muted>
+        <video autoplay loop muted playsinline>
             <source src="{{ url_for('static', filename='/img/history/interior/canoehanging.mp4') }}" type="video/mp4">
         </video>
         </div>
@@ -103,7 +103,7 @@
         <img src="{{ url_for('static', filename='/img/history/interior/IMG_1055.jpg') }}">
     </div>
     <div class="grid-item">
-        <video autoplay loop muted>
+        <video autoplay loop muted playsinline>
             <source src="{{ url_for('static', filename='/img/history/foundation.mp4') }}" type="video/mp4">
         </video>
         </div>
@@ -114,7 +114,7 @@
         <img src="{{ url_for('static', filename='/img/history/interior/IMG_1068.jpg') }}">
     </div>
     <div class="grid-item">
-        <video autoplay loop muted>
+        <video autoplay loop muted playsinline>
             <source src="{{ url_for('static', filename='/img/history/interior/barnfloor.mp4') }}" type="video/mp4">
         </video>
         </div>
@@ -122,7 +122,7 @@
         <img src="{{ url_for('static', filename='/img/history/interior/IMG_1178.jpg') }}">
     </div>
     <div class="grid-item">
-        <video autoplay loop muted>
+        <video autoplay loop muted playsinline>
             <source src="{{ url_for('static', filename='/img/history/interior/building3.mp4') }}" type="video/mp4">
         </video>
         </div>
@@ -158,7 +158,7 @@
         <img src="{{ url_for('static', filename='/img/history/before/IMG_3174.jpg') }}">
     </div>
     <div class="grid-item">
-        <video autoplay loop muted>
+        <video autoplay loop muted playsinline>
             <source src="{{ url_for('static', filename='/img/history/before/oldbarntreetrimming.mp4') }}" type="video/mp4">
         </video>
     </div>
@@ -185,23 +185,23 @@
 
 
 {% include 'footer.html' %}
-
-<script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
 <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
 <script src="https://unpkg.com/packery@2.1.2/dist/packery.pkgd.min.js"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    window.onload = () => {
         const grid = document.querySelector('.grid');
+        if (!grid) return; // Avoid errors if grid is not found
+
         const pckry = new Packery(grid, {
             itemSelector: '.grid-item',
             percentPosition: true
         });
 
-        // Ensure layout happens after images are loaded
-        imagesLoaded(grid).on('progress', function () {
+        // Ensure layout happens after ALL images are loaded
+        imagesLoaded(grid).on('always', function () {
             pckry.layout();
         });
-    });
+    };
 
 
 //PAGE TITLE FADE

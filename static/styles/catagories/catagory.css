@@ -1,10 +1,5 @@
-.grid {
-    position: relative; /* Required for Packery */
-    width: 100%; /* Full width of the container */
-    margin: 0 auto; /* Center the grid on the page */
-    z-index: 0;
-    min-height: 100vh;
-  }
+.video::-webkit-media-controls {
+  display: none !important;}
   
   .grid-item {
     position: absolute; /* Packery handles item placement */
