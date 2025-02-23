@@ -1,11 +1,10 @@
-
 html, body {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
-  overflow-x: hidden;
   background-color: black;
+  overflow: auto; /* Allow scrolling after animation */
 }
 
 .sub {
@@ -18,14 +17,14 @@ html, body {
   position: absolute;
   z-index: 1;
   top: 15em;
-  
-
 }
-.history-container{
+
+.history-container {
   position: relative;
-  height: 300vh;
+  min-height: 100vh;
   width: 100%;
   overflow: visible;
+  padding-bottom: 10%
 }
 
 .pagetitle {
@@ -35,34 +34,51 @@ html, body {
   font-size: 4.5em;
   padding-top: 4em;
   color: white;
-  padding-left: 200px;
+  text-align: center;
+  justify-content: center;
   line-height: 1em;
   position: absolute;
   z-index: 1;
   transition: opacity 1.5s ease-in-out;
+  width: 100%
 }
-.hero{
+
+.hero {
   width: 100vw;
   height: auto;
   overflow: visible;
-  z-index: -1;
+  z-index: 0;
   display: block;
+  
   top: 0;
+  transform: translateY(0);
 }
 
 .text {
-  padding-left: 200px;
-  width: 65%;
   color: white;
   position: absolute;
-  top: 25em;
+  top: 35em;
   transform: translateY(0);
-
+  text-align: center;
+  justify-content: center;
+  z-index: 1;
+  overflow: visible;
+  width: 100%
 }
 
-
-
-
+.ender {
+  font-family: "adobe-garamond-pro", serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 2em;
+  line-height: 1em;
+  color: white;
+  margin-bottom: 1.5em;
+  margin-top: 2em;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+}
 
 .pagetitle, .sub {
   transition: opacity 0.4s ease, transform 0.4s ease;
@@ -72,11 +88,14 @@ p {
   font-family: "adobe-garamond-pro", serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 2em;
- line-height: 1em;
+  font-size: 1em;
+  line-height: .7em;
   color: white;
-  margin-bottom: 1.5em
+  margin-bottom: 0;
+  text-align: center;
+  justify-content: center;
 }
+
 
 
 .grid {
@@ -85,7 +104,7 @@ p {
   margin: 0 auto; /* Center the grid on the page */
   z-index: 0;
   min-height: 100vh;
-  padding-top: 15em;
+  padding-top: 0;
 }
 
 .grid-item {
@@ -94,7 +113,6 @@ p {
   height: auto; /* Height depends on image */
   box-sizing: border-box;
   padding: 3px;
-
 }
 
 .grid-item img {
@@ -107,53 +125,49 @@ p {
   width: 100%; /* Example wider item */
 }
 
-@media (min-width: 640px)  {.grid-item {width: 50%}}
-@media (min-width: 960px)  {.grid-item {width: 33.333%}}
-@media (min-width: 1280px) {.grid-item {width: 25%}}
-@media (min-width: 1600px) {.grid-item {width: 20%}}
-@media (min-width: 1920px) {.grid-item {width: 16.666%}}
-@media (min-width: 2240px) {.grid-item {width: 14.2857%}}
-
-
-@media (max-width: 850px) {
-  .pagetitle , .sub , .text {
-    padding-left: 15px;
-  }
+@media (min-width: 640px) {
+  .grid-item { width: 50% }
 }
+@media (min-width: 960px) {
+  .grid-item { width: 33.333% }
+}
+@media (min-width: 1280px) {
+  .grid-item { width: 25% }
+}
+@media (min-width: 1600px) {
+  .grid-item { width: 20% }
+}
+@media (min-width: 1920px) {
+  .grid-item { width: 16.666% }
+}
+@media (min-width: 2240px) {
+  .grid-item { width: 14.2857% }
+}
+
 @media (max-width: 640px) {
-  .pagetitle{
+  .pagetitle {
     font-size: 3em;
     padding-top: 6.4em;
   }
-  .text{
-    width: 80%;
-  }
-  p{
-    font-size: 1.2em;
-  }
+
 }
 
 @media (max-width: 1100px) {
- .grid {
-  padding-top: 30em;
- }
- p {
-  font-size: 1.5em;
- }
- .history-container {
-  height: 200vh;
- }
+  .grid{
+    padding-top: 20em;
+  }
+ 
+  }
+
+
+@media (max-width: 850px) {
+  .grid {
+    padding-top: 30em;
+  }
 }
 
- @media (max-width: 850px) {
+@media (max-width: 680px) {
   .grid {
-   padding-top: 40em;
+    padding-top: 40em;
   }
- }
-
-
- @media (max-width: 680px) {
-  .grid {
-   padding-top: 70em;
-  }
- }
+}

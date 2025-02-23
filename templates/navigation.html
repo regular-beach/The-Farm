@@ -2,7 +2,7 @@
 <link href="{{ url_for('static', filename='styles/base.css') }}" rel="stylesheet" />
 <link rel="stylesheet" href="https://use.typekit.net/upe0xgu.css">
 
-<a class="nav-title" href="{{ url_for('menu') }}">The Farm</a>
+<!--<a class="nav-title" href="{{ url_for('menu') }}">The Farm</a>--> 
 
 
 <script type="text/javascript">
@@ -27,6 +27,7 @@
 <div style="display:none" id="block">
   <div class="nav-box">
       <div class="nav">
+        <div><a href="{{ url_for('menu') }}">Home</a></div>
           <div><a href="{{ url_for('history') }}">History & Restoration</a></div>
           <div><a href="{{ url_for('preserving') }}">Preserving Food</a></div>
           <div><a href="{{ url_for('vineyard') }}">Vineyard</a></div>

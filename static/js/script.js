@@ -70,3 +70,45 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+
+
+
+
+//storing old history script here 
+ // Move the image and text upwards after the fade-in
+ setTimeout(() => {
+  const textBottomOffset = text.getBoundingClientRect().bottom;
+  const windowHeight = window.innerHeight;
+  const distanceToMove = textBottomOffset - windowHeight;
+
+  heroImage.style.transition = "transform 8s ease-in-out";
+  text.style.transition = "transform 8s ease-in-out";
+  heroImage.style.transform = `translateY(-${distanceToMove}px)`;
+  text.style.transform = `translateY(-${distanceToMove}px)`;
+
+  // Re-enable scrolling after the animation finishes
+  setTimeout(() => {
+      document.body.style.overflow = "auto";
+      enableManualScrolling(); // Enable manual scrolling here
+  }, 2000);
+
+  // Ensure the history container's overflow is visible so the content doesn't get clipped
+  historyContainer.style.overflow = "visible";
+}, 2000);
+
+// Enable manual scrolling once the animation completes
+function enableManualScrolling() {
+  // You can use GSAP ScrollTo for smooth scroll to a specific section after animation
+  gsap.to(window, {
+      duration: 3, // Adjust the time for the smooth scroll
+      scrollTo: {
+          y: historyContainer, // Scroll to the history container
+          offsetY: 100, // Adjust if needed
+          autoKill: true // Allow manual scrolling after animation
+      },
+      ease: "power2.out"
+  });
+}
+
+// Disable scroll temporarily until animation is done
+document.body.style.overflow = "hidden";

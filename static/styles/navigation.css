@@ -12,7 +12,7 @@
     font-family: "adobe-garamond-pro", serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 1.7em;
+    font-size: 1.2em;
     margin-left: 15px;
     transition: color 0.3s ease;
     line-height: 1.2em;
@@ -39,7 +39,7 @@
     transition: color 0.3s ease;
     text-decoration: none;
     padding-left: 15px;
-    margin-top: 2.5em;
+    margin-top: 15px;
     position: absolute;
     mix-blend-mode: difference;
     z-index: 6;

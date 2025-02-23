@@ -19,7 +19,7 @@
     
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            const text = "The Farm catalogues the work of Beth Nelson and her multidisciplinary role managing and restoring one historic property in Sonoma County, California.";
+            const text = "The Farm catalogues the work of Beth Nelson and her multidisciplinary role, managing, restoring and creating narrative for one historic property in Sonoma County, California.";
             let index = 0;
             const typingTextElement = document.getElementById("typingText");
             const mainContent = document.getElementById("mainContent");
@@ -68,9 +68,11 @@
                 <div><a href="{{ url_for('history') }}">History & Restoration</a></div>
                 <div><a href="{{ url_for('preserving') }}">Preserving Food</a></div>
                 <div><a href="{{ url_for('vineyard') }}">Vineyard</a></div>
-                <div><a href="{{ url_for('hospitality') }}">Hospitality & Education</a></div>       
+                <div><a href="{{ url_for('hospitality') }}">Hospitality & Education</a></div> 
+                <div><a href="{{ url_for('contact') }}">Contact</a></div>       
+      
             </div>
-            <img class="hero" src="{{ url_for('static', filename='/img/hero/MENU_HERO_CROP.jpg') }}" alt="History Image">
+            <img class="hero" src="{{ url_for('static', filename='/img/hero/home_hero.jpg') }}" alt="History Image">
         </div>
     
         <div class="story">

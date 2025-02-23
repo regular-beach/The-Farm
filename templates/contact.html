@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Farm/Contact</title>
+    <link rel="stylesheet" href="https://use.typekit.net/upe0xgu.css">
     <link href="{{ url_for('static', filename='styles/catagories/contact.css') }}" rel="stylesheet" />
 </head>
 
@@ -11,18 +12,71 @@
 <body>
 
     {% include 'navigation.html' %}
-
     <div class="beth">
-        <img src="{{ url_for('static', filename='/img/history/interior/IMG_9675.jpg') }}">
-        <h1>The Farm catalogues the work of Beth Nelson and her multidisiplinary role managing and restoring one historic property in Sonoma County, California. Please reach out for more details about Beth's involvement with The Farm.
-        </h1>
-        <h1>Email:<a href="mailto:nelsonart@ymail.com"> nelsonart@ymail.com</a><br><br>
-        <a href="https://bethnelsoncv.blogspot.com/" target="_blank">CV: Beth's other projects.</a></h1>
-        
+        <img src="{{ url_for('static', filename='/img/contact/contact.jpg') }}">
+        <div class="contact">
+            <h2>The Farm catalogues the work of Beth Nelson and her multidisciplinary role, managing, restoring and creating narrative for one historic property in Sonoma County, California.  
+            </h2>
+            <h1>Available for both domestic and international projects. <br>
+                <a href="mailto:nelsonart@ymail.com"> nelsonart@ymail.com</a><br>
+            <a href="https://bethnelsoncv.blogspot.com/" target="_blank">CV: Beth's past work.</a></h1>
+          </div>
+    </div>
+    <div class=end>
+    <h3> The End </h3>
+    <h4>click to play</h4>
+</div>
+  <div class="ender">
+    <audio id="audio" loop>
+        <source src="{{ url_for('static', filename='/img/contact/song.m4a') }}" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <video autoplay loop muted playsinline>
+        <source src="{{ url_for('static', filename='/img/contact/ender_1.mp4') }}" type="video/mp4">
+    </video>
     </div>
 
     <div>
-    {% include 'footer.html' %}
+    {% include 'footercontact.html' %}
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const audio = document.getElementById("audio");
+    const targetDiv = document.querySelector(".ender");
+    let userInteracted = false; // Tracks if user interacted with the page
+    let audioPlayedOnce = false; // Tracks if the audio has completed once
+
+    // Enable audio after user interacts with the page
+    function enableAudio() {
+        userInteracted = true;
+        document.body.removeEventListener("click", enableAudio);
+    }
+
+    document.body.addEventListener("click", enableAudio);
+
+    // Stop audio from looping
+    audio.loop = false;
+
+    // Event listener to track when audio finishes playing
+    audio.addEventListener("ended", function () {
+        audioPlayedOnce = true; // Prevents further playback
+    });
+
+    // Intersection Observer to play/pause audio
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && userInteracted && !audioPlayedOnce) {
+                audio.play().catch(error => console.log("Audio play blocked:", error));
+            } else {
+                audio.pause(); // Pause instead of resetting
+            }
+        });
+    }, { threshold: 0.5 });
+
+    observer.observe(targetDiv);
+});
+
+</script>
 </body>
 </html>
