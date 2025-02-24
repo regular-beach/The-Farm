@@ -2,6 +2,12 @@
     position: relative;
 }
 
+.hero{
+  width: 100vw;
+  height: auto;
+  object-fit: cover;
+}
+
 .pagetitle {
     font-family: "adobe-garamond-pro", serif;
     font-weight: 400;
