@@ -17,17 +17,68 @@
 
 
     <div class="pagetitle">Hospitality and Education</div>
-        <div class="content"></div>
-        <div class="image">
-            <img src="{{ url_for('static', filename='/img/hospitality/IMG_1028.jpg') }}">
-        </div>
-        <div class="image">
-            <img src="{{ url_for('static', filename='/img/hospitality/IMG_7698.jpg') }}">
-        </div>
-        
+
+        <div class="hero">
+                <video autoplay controls>
+                    <source src="{{ url_for('static', filename='/img/hospitality/test2.mp4') }}" type="video/mp4">
+                </video>
+            </div>
 
 
-        {% include 'footer.html' %}
+        <div class="content">
+            <div class="grid-container">
+                <div class="image">
+                    <img src="{{ url_for('static', filename='/img/hospitality/plums.jpg') }}">
+                </div>
+                <div class="image">
+                    <img src="{{ url_for('static', filename='/img/hospitality/education.jpg') }}">
+                </div>
+            </div>
+        </div>
+        <div class="content">
+        <div class="grid-container">
+            <div class="image">
+                <img src="{{ url_for('static', filename='/img/hospitality/education4.jpg') }}">
+            </div>
+            <div class="image">
+                <img src="{{ url_for('static', filename='/img/hospitality/h1.jpg') }}">
+            </div>
+        </div>
+        </div>
+        <div class="content">
+            <div class="grid-container">
+                <div class="image">
+                    <img src="{{ url_for('static', filename='/img/hospitality/education9.jpg') }}">
+                </div>
+                <div class="image">
+                    <img src="{{ url_for('static', filename='/img/hospitality/education15.jpg') }}">
+                </div>
+            </div>
+            </div>
+
+            <div class="content">
+                <div class="grid-container">
+                    <div class="image">
+                        <img src="{{ url_for('static', filename='/img/hospitality/trevz.jpg') }}">
+                    </div>
+                    <div class="image">
+                        <img src="{{ url_for('static', filename='/img/hospitality/trevz2.jpg') }}">
+                    </div>
+                </div>
+                </div>
+                <div class="content">
+                    <div class="grid-container">
+                        <div class="image">
+                            <img src="{{ url_for('static', filename='/img/hospitality/b.jpg') }}">
+                        </div>
+                        <div class="image">
+                            <img src="{{ url_for('static', filename='/img/hospitality/education2.jpg') }}">
+                        </div>
+                    </div>
+                    </div>
+
+
+        {% include 'footered.html' %}
 
         <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
         <script src="https://unpkg.com/packery@2.1.2/dist/packery.pkgd.min.js"></script>
