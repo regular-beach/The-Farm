@@ -6,38 +6,26 @@
     <title>Hospitality & Education</title>
     <link href="{{ url_for('static', filename='styles/catagories/hospitality.css') }}" rel="stylesheet" />
     <link href="{{ url_for('static', filename='styles/catagories/catagory.css') }}" rel="stylesheet" />
-    <link href="{{ url_for('static', filename='styles/base.css') }}" rel="stylesheet" />
+
 </head>
 
 
 <body>
 
-    {% include 'navigation.html' %}
+    {% include 'nav2.html' %}
 
 
- <div class="gridtitle">
+
     <div class="pagetitle">Hospitality and Education</div>
-        <div class="grid">
-        <div class="grid-item wide">
+        <div class="content"></div>
+        <div class="image">
             <img src="{{ url_for('static', filename='/img/hospitality/IMG_1028.jpg') }}">
         </div>
-        <div class="grid-item">
-            <img src="{{ url_for('static', filename='/img/hospitality/IMG_7700.jpg') }}">
-        </div>
-        <div class="grid-item">
+        <div class="image">
             <img src="{{ url_for('static', filename='/img/hospitality/IMG_7698.jpg') }}">
         </div>
-        <div class="grid-item wide">
-            <img src="{{ url_for('static', filename='/img/hospitality/IMG_2267.jpg') }}">
-        </div>
-        <div class="grid-item">
-            <img src="{{ url_for('static', filename='/img/hospitality/IMG_5665.jpg') }}">
-        </div>
-        <div class="grid-item">
-            <img src="{{ url_for('static', filename='/img/hospitality/IMG_0404.jpg') }}">
-        </div>
-    </div>
-    </div>
+        
+
 
         {% include 'footer.html' %}
 

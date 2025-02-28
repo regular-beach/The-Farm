@@ -1,0 +1,40 @@
+<link href="{{ url_for('static', filename='styles/nav2.css') }}" rel="stylesheet" />
+<link href="{{ url_for('static', filename='styles/base.css') }}" rel="stylesheet" />
+<link rel="stylesheet" href="https://use.typekit.net/upe0xgu.css">
+
+<!--<a class="nav-title" href="{{ url_for('menu') }}">The Farm</a>--> 
+
+
+<script type="text/javascript">
+    function showOrHide(clickedElem) {
+    var selector = clickedElem.getAttribute("data-selector");
+    var target = document.querySelector(selector);
+
+    if (target.style.display === "none" || target.style.display === "") {
+        target.style.display = "block"; // Show the element
+        clickedElem.innerText = "Menu-"; // Update the button text
+    } else {
+        target.style.display = "none"; // Hide the element
+        clickedElem.innerText = "Menu+"; // Reset the button text
+    }
+}
+</script>
+
+<span class="menu">
+  <a href="#" id="id" data-selector="#block" onclick="showOrHide(this)">Menu+</a>
+</span>
+
+<div style="display:none" id="block">
+  <div class="nav-box">
+      <div class="nav">
+        <div><a href="{{ url_for('menu') }}">Home</a></div>
+          <div><a href="{{ url_for('history') }}">History & Restoration</a></div>
+          <div><a href="{{ url_for('preserving') }}">Preserving Food</a></div>
+          <div><a href="{{ url_for('vineyard') }}">Vineyard</a></div>
+          <div><a href="{{ url_for('hospitality') }}">Hospitality & Education</a></div>
+          <div><a href="{{ url_for('contact') }}">Contact</a></div>
+      </div>
+  </div>
+</div> 
+</div>
+
