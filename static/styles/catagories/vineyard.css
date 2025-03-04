@@ -20,6 +20,17 @@
     position: absolute;
     z-index: 1;
   }
+
+  .credits {
+    font-family: "adobe-garamond-pro", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 2em;
+    color: white;
+    padding-left: 200px;
+    z-index: 1;
+    line-height: 1.2em;
+  }
   @media (max-width: 800px) {
     .pagetitle {
       padding-left: 15px;
@@ -30,6 +41,10 @@
     .pagetitle{
       font-size: 3em;
       padding-top: 6.4em;
+    }
+
+    .credits{
+      font-size: 1em;
     }
   }
 

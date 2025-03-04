@@ -58,9 +58,7 @@
                     <source src="{{ url_for('static', filename='/img/vineyard/crane.mp4') }}" type="video/mp4">
                 </video>
             </div>  
-        <div class="grid-item">
-            <img src="{{ url_for('static', filename='/img/vineyard/IMG_0553.png') }}">
-        </div>
+
         <div class="grid-item">
             <video autoplay loop muted playsinline>
                 <source src="{{ url_for('static', filename='/img/vineyard/tractor3.mp4') }}" type="video/mp4">
@@ -73,7 +71,10 @@
             <video autoplay loop muted playsinline>
                 <source src="{{ url_for('static', filename='/img/vineyard/harvest.mp4') }}" type="video/mp4">
             </video>
-        </div>       
+        </div> 
+        <div class="grid-item">
+            <img src="{{ url_for('static', filename='/img/vineyard/IMG_8291.jpg') }}">
+        </div>      
         <div class="grid-item">
             <img src="{{ url_for('static', filename='/img/vineyard/IMG_3443.jpg') }}">
         </div> 
@@ -110,9 +111,6 @@
             <img src="{{ url_for('static', filename='/img/vineyard/IMG_1046.jpg') }}">
         </div> 
         <div class="grid-item">
-            <img src="{{ url_for('static', filename='/img/vineyard/IMG_8291.jpg') }}">
-        </div>
-        <div class="grid-item">
             <video autoplay loop muted playsinline>
                 <source src="{{ url_for('static', filename='/img/vineyard/harvest.mp4') }}" type="video/mp4">
             </video>
@@ -121,6 +119,11 @@
             <img src="{{ url_for('static', filename='/img/vineyard/IMG_8716.jpg') }}">
         </div> 
 </div>
+
+
+    <div>
+        {% include 'footervineyard.html' %}
+        </div>
 
 <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
 <script src="https://unpkg.com/packery@2.1.2/dist/packery.pkgd.min.js"></script>
@@ -141,6 +144,5 @@
     };
 </script>
 
-{% include 'footervineyard.html' %}
 </body>
 </html>

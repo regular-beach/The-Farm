@@ -15,81 +15,12 @@
     <div class="beth">
         <img src="{{ url_for('static', filename='/img/contact/contact.jpg') }}">
         <div class="contact">
-            <h2>The work of Beth Nelson and her multidisciplinary role, managing, restoring and creating narrative for one historic property in Sonoma County, California.  
-            </h2>
-            <h1>Available for both domestic and international projects.</h1>
-             <div class="underline"> <h1>  <a href="mailto:nelsonart@ymail.com"> nelsonart@ymail.com</a><br>
-            <a href="https://bethnelsoncv.blogspot.com/" target="_blank">Curriculum Vitae</a></h1></div>
+            <h1>For more information:<a href="mailto:nelsonart@ymail.com"> nelsonart@ymail.com</a>.</h1>
+            <h1><a href="https://bethnelsoncv.blogspot.com/" target="_blank">Curriculum Vitae ↘︎</a></h1>
+            <h1><a href="{{ url_for('credits') }}">Credits ↘︎</a></div>  </h1>
           </div>
     </div>
 
-  <div class="ender">
-    <h4>click to play</h4>
-    <audio id="audio" loop>
-        <source src="{{ url_for('static', filename='/img/contact/song.m4a') }}" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-    <video autoplay loop muted playsinline>
-        <source src="{{ url_for('static', filename='/img/contact/ender_1.mp4') }}" type="video/mp4">
-    </video>
-</div>
-
-    <div class=end>
-            <h4>This site was designed and coded by <a href="https://new-graphics-2000.org/" target="_blank">N-G-2</a> in collaboration with Beth Nelson</h4>
-            <h4>Song by <a href="https://www.instagram.com/sea.beetle/" target="_blank">@seabeatle</a> </h4>
-            <h4>All images © Beth Nelson</h4>
-    </div>
-
-    <div>
-    {% include 'footer.html' %}
-</div>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const audio = document.getElementById("audio");
-        const targetDiv = document.querySelector(".ender");
-        let userInteracted = false; // Tracks if user has clicked to enable audio
-        let wasPlaying = false; // Tracks if the audio was playing before it was paused
-    
-        // Enable audio on user click
-        function enableAudio() {
-            if (!userInteracted) {
-                userInteracted = true;
-                audio.play().catch(error => console.log("Audio play blocked:", error));
-            } else {
-                // Toggle play/pause on click
-                if (audio.paused) {
-                    audio.play();
-                } else {
-                    audio.pause();
-                }
-            }
-        }
-    
-        document.body.addEventListener("click", enableAudio);
-    
-        // Intersection Observer to handle auto-play/pause on scroll
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    if (wasPlaying) {
-                        audio.play().catch(error => console.log("Audio play blocked:", error));
-                    }
-                } else {
-                    if (!audio.paused) {
-                        wasPlaying = true; // Remember that it was playing before pausing
-                        audio.pause();
-                    } else {
-                        wasPlaying = false; // Reset if it wasn't playing
-                    }
-                }
-            });
-        }, { threshold: 0.1 });
-    
-        observer.observe(targetDiv);
-    });
-    </script>
-    
-    
+        {% include 'footer.html' %}
 </body>
 </html>

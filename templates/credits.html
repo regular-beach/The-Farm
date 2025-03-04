@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Farm/Contact</title>
+    <link rel="stylesheet" href="https://use.typekit.net/upe0xgu.css">
+    <link href="{{ url_for('static', filename='styles/catagories/contact.css') }}" rel="stylesheet" />
+</head>
+
+
+<body>
+    {% include 'navigation.html' %}
+    <div class="ender">
+    <audio id="audio" loop>
+        <source src="{{ url_for('static', filename='/img/contact/song.m4a') }}" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <video autoplay loop muted playsinline>
+        <source src="{{ url_for('static', filename='/img/contact/ender_1.mp4') }}" type="video/mp4">
+    </video>
+
+    <div class=end>
+        <h4>click to play</h4>
+        <div class="cred">
+            <h1>This site was designed and coded by <a href="https://new-graphics-2000.org/" target="_blank">N-G-2 ↘︎</a> in collaboration with Beth Nelson</h1>
+            <h1>Song by <a href="https://www.instagram.com/sea.beetle/" target="_blank">@seabeatle ↘︎</a> </h1>
+            <h1>All images © Beth Nelson</h1>
+        </div>
+    </div>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const audio = document.getElementById("audio");
+        const targetDiv = document.querySelector(".ender");
+        let userInteracted = false; // Tracks if user has clicked to enable audio
+        let wasPlaying = false; // Tracks if the audio was playing before it was paused
+
+        // Enable audio on user click
+        function enableAudio(event) {
+            // Prevent interaction if a link is clicked
+            if (event.target.tagName === 'A') {
+                return; // Do nothing if a link is clicked
+            }
+
+            if (!userInteracted) {
+                userInteracted = true;
+                audio.play().catch(error => console.log("Audio play blocked:", error));
+            } else {
+                // Toggle play/pause on click
+                if (audio.paused) {
+                    audio.play();
+                } else {
+                    audio.pause();
+                }
+            }
+        }
+
+        document.body.addEventListener("click", enableAudio);
+
+        // Intersection Observer to handle auto-play/pause on scroll
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (wasPlaying) {
+                        audio.play().catch(error => console.log("Audio play blocked:", error));
+                    }
+                } else {
+                    if (!audio.paused) {
+                        wasPlaying = true; // Remember that it was playing before pausing
+                        audio.pause();
+                    } else {
+                        wasPlaying = false; // Reset if it wasn't playing
+                    }
+                }
+            });
+        }, { threshold: 0.1 });
+
+        observer.observe(targetDiv);
+    });
+</script>
+
+    
+    
+</body>
+</html>

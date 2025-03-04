@@ -29,9 +29,6 @@ def preserving():
 def vineyard():
     return render_template('catagories/vineyard.html')
 
-@app.route('/catagories/hospitality')
-def hospitality():
-    return render_template('catagories/hospitality.html')
 
 @app.route('/contact')
 def contact():
@@ -48,6 +45,10 @@ def footer():
 @app.route('/home')
 def home():
     return render_template('home.html')
+
+@app.route('/credits')
+def credits():
+    return render_template('credits.html')
 
 @app.route('/flickity')
 def flickity():
