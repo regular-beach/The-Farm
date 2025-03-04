@@ -151,20 +151,37 @@
 <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
 <script src="https://unpkg.com/packery@2.1.2/dist/packery.pkgd.min.js"></script>
 <script>
-    window.onload = () => {
-        const grid = document.querySelector('.grid');
-        if (!grid) return; // Avoid errors if grid is not found
+ window.onload = () => {
+    const grid = document.querySelector('.grid');
+    if (!grid) return; // Avoid errors if grid is not found
 
-        const pckry = new Packery(grid, {
-            itemSelector: '.grid-item',
-            percentPosition: true
-        });
+    const pckry = new Packery(grid, {
+        itemSelector: '.grid-item',
+        percentPosition: true
+    });
 
-        // Ensure layout happens after ALL images are loaded
-        imagesLoaded(grid).on('always', function () {
-            pckry.layout();
-        });
-    };
+    // Ensure layout happens after ALL images and videos are loaded
+    const allItems = grid.querySelectorAll('img, video');
+    let loadedCount = 0;
+
+    allItems.forEach(item => {
+        if (item.tagName === 'IMG') {
+            imagesLoaded(item, function() {
+                loadedCount++;
+                if (loadedCount === allItems.length) {
+                    pckry.layout();
+                }
+            });
+        } else if (item.tagName === 'VIDEO') {
+            item.onloadeddata = () => {
+                loadedCount++;
+                if (loadedCount === allItems.length) {
+                    pckry.layout();
+                }
+            };
+        }
+    });
+};
 </script>
 </body>
 </html>

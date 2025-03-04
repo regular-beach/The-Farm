@@ -242,3 +242,13 @@ p {
 
 }
 }
+
+@media (max-width: 540px) {
+  .text {
+    font-size: 1em;
+  }
+
+  .storytwo {
+    font-size: 1.5em;
+  }
+}
