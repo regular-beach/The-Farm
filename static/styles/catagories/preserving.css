@@ -1,7 +1,7 @@
 .hero-container {
     position: relative;
     width: 100vw;
-    height: 100%;
+    height: 100vh;
     padding-bottom: 3px;
 }
 
@@ -9,7 +9,6 @@
     width: 100vw;
     height: 100vh;
     object-fit: cover;
-    display: block;
     z-index: -1;
     padding-bottom: 10px;
 }
@@ -35,6 +34,6 @@
 @media (max-width: 640px) {
   .pagetitle{
     font-size: 3em;
-    padding-top: 6.4em;
+    padding-top: 4.5em;
   }
 }
