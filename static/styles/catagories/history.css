@@ -64,7 +64,7 @@ html, body {
   z-index: 1;
   overflow: visible;
   width: 100%;
-  font-size: 1.2em;
+  font-size: 1.5em;
 }
 
 .story {
@@ -94,7 +94,7 @@ html, body {
 }
 .T2 p {
   width: 80%;
-  font-size: 1.2em;
+  font-size: 1.5em;
   line-height: 1.3 !important;
   padding-left: 50px;
 }
