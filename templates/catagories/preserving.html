@@ -7,11 +7,15 @@
     <link href="{{ url_for('static', filename='styles/base.css') }}" rel="stylesheet" />
     <link href="{{ url_for('static', filename='styles/catagories/preserving.css') }}" rel="stylesheet" />
     <link href="{{ url_for('static', filename='styles/catagories/catagory.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='styles/catagories/loading.css') }}" rel="stylesheet" />
 </head>
 
 
 <body>
-    {% include 'loading.html' %}
+    <div id="loading-screen">
+        <h1 id="loading-text">Loading</h1>
+    </div>
+    <div id="main-content" style="display:none;"> 
     {% include 'navigation.html' %}
 
     <div class="hero-container">
@@ -146,11 +150,23 @@
 
 </div>
 
+
 {% include 'footerpreserve.html' %}
+</div>
 
 <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
 <script src="https://unpkg.com/packery@2.1.2/dist/packery.pkgd.min.js"></script>
 <script>
+//for loading
+window.addEventListener('load', () => {
+    // Hide the loading screen
+    const loadingScreen = document.getElementById('loading-screen');
+    const mainContent = document.getElementById('main-content');
+
+    loadingScreen.style.display = 'none'; // Hide the loading screen
+    mainContent.style.display = 'block'; // Show the main content
+});
+
  window.onload = () => {
     const grid = document.querySelector('.grid');
     if (!grid) return; // Avoid errors if grid is not found
