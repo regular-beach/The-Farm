@@ -1,0 +1,16 @@
+<head> <link href="{{ url_for('static', filename='styles/loading.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.typekit.net/upe0xgu.css">
+</head>
+
+<div id="loading-screen">
+    <h1 id="loading-text">Loading</h1>
+</div>
+
+<script>
+    window.addEventListener('load', () => {
+        const loadingScreen = document.getElementById('loading-screen');
+        const mainContent = document.getElementById('main-content');
+        loadingScreen.style.display = 'none'; // Hide the loading screen
+        mainContent.style.display = 'block';  // Show the main content
+    });
+</script>
