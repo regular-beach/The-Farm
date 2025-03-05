@@ -38,10 +38,6 @@ def contact():
 def navigation():
     return render_template('navigation.html')
 
-@app.route('/loading')
-def loading():
-    return render_template('loading.html')
-
 @app.route('/footer')
 def footer():
     return render_template('footer.html')
