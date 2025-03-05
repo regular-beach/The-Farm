@@ -277,73 +277,57 @@
 <script src="https://unpkg.com/gsap@3.10.2/dist/gsap.min.js"></script>
 <script src="https://unpkg.com/gsap@3.10.2/dist/ScrollToPlugin.min.js"></script>
 
+
 <script>
+    window.addEventListener('load', () => {
+        const loadingScreen = document.getElementById('loading-screen');
+        const mainContent = document.getElementById('main-content');
 
-//for loading
-window.addEventListener('load', () => {
-    // Hide the loading screen
-    const loadingScreen = document.getElementById('loading-screen');
-    const mainContent = document.getElementById('main-content');
-
-    loadingScreen.style.display = 'none'; // Hide the loading screen
-    mainContent.style.display = 'block'; // Show the main content
-});
-
-  window.onload = () => {
-    const grid = document.querySelector('.grid');
-    const stopper = document.querySelector(".stopper");
-    const title = document.querySelector(".pagetitle");
-    const text = document.querySelector(".text");
-    const heroImage = document.querySelector(".hero");
-    const historyContainer = document.querySelector(".history-container");
-    const ender = document.querySelector(".ender");
-
-    if (!grid) return;
-
-    const pckry = new Packery(grid, {
-      itemSelector: '.grid-item',
-      percentPosition: true
+        loadingScreen.style.display = 'none'; // Hide loading screen
+        mainContent.style.display = 'block';  // Show main content
     });
 
-    imagesLoaded(grid).on('always', function () {
-      pckry.layout();
-    });
+    window.onload = () => {
+        const grid = document.querySelector('.grid');
+        const title = document.querySelector(".pagetitle");
+        const text = document.querySelector(".text");
+        const heroImage = document.querySelector(".hero");
+        const ender = document.querySelector(".ender");
 
-   /* title.style.opacity = "1";
-    text.style.opacity = "1";
-    heroImage.style.transform = "translateY(0)";
-    text.style.transform = "translateY(0)";
+        if (!grid) return;
 
-    // Fade out title after 2 seconds
-    setTimeout(() => {
-      gsap.to(title, { opacity: 0, duration: 1 });
-    }, 2000);
+        const pckry = new Packery(grid, {
+            itemSelector: '.grid-item',
+            percentPosition: true
+        });
 
-    // Fade in text after title fades
-    setTimeout(() => {
-      gsap.to(text, { opacity: 1, duration: 1.5 });
-    }, 2000);
+        imagesLoaded(grid).on('always', function () {
+            pckry.layout();
+        });
+        const textElements = document.querySelectorAll('.text');
 
-    // Move text and hero image upwards, scroll to stopper div
-    setTimeout(() => {
-      gsap.to([heroImage, text], {
-        duration: 8,
-        transform: "translateY(-70%)",
-      });
-
+const checkVisibility = () => {
+  textElements.forEach((text) => {
+    const rect = text.getBoundingClientRect();
     
-      gsap.to(window, {
-        duration: 8,
-        scrollTo: {
-          y: ender,
-          autoKill: true,
-          offsetY: 70
-        }
-      });
-    }, 1000);
-*/
-  };
-</script>
+    // If the element is within the viewport, animate it
+    if (rect.top >= 0 && rect.top <= window.innerHeight) {
+      text.style.opacity = '1';
+      text.style.transform = 'scale(1)'; // Scale to full size when in view
+    } else {
+      text.style.opacity = '0';
+      text.style.transform = 'scale(0.5)'; // Scale back down when out of view
+    }
+  });
+};
+
+// Detect scroll and trigger visibility check
+window.addEventListener('scroll', checkVisibility);
+
+// Call once to check visibility immediately on load
+checkVisibility();
+    }
+    </script>
 
 
 
