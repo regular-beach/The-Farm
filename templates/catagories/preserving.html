@@ -37,7 +37,7 @@
     </div>
     <div class="grid-item">
         <video autoplay loop muted playsinline>
-            <source src="{{ url_for('static', filename='/img/preserving/walnutdye.mp4') }}" type="video/mp4">
+            <source src="{{ url_for('static', filename='/img/preserving/walnutdye.mp4') }}">
         </video>
     </div>
     <div class="grid-item">
@@ -91,7 +91,7 @@
     </div>
     <div class="grid-item">
         <video autoplay loop muted playsinline>
-            <source src="{{ url_for('static', filename='/img/preserving/preserving2.mp4') }}" type="video/mp4">
+            <source src="{{ url_for('static', filename='/img/preserving/preserving2.mp4') }}" type="video/mp4>
         </video>
     </div>
     <div class="grid-item">
@@ -182,6 +182,30 @@
         }
     });
 };
+
+//lazy load 
+document.addEventListener("DOMContentLoaded", function () {
+    const lazyImages = document.querySelectorAll('.grid-item');
+
+    const lazyLoad = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const image = entry.target;
+                image.src = image.dataset.src; // Set the actual image source
+                image.onload = () => image.classList.add('loaded'); // Optional: add a loaded class for styling
+                observer.unobserve(image); // Stop observing after the image is loaded
+            }
+        });
+    };
+
+    const observer = new IntersectionObserver(lazyLoad, {
+        rootMargin: '0px 0px 200px 0px', // Start loading 200px before the image enters the viewport
+    });
+
+    lazyImages.forEach(image => {
+        observer.observe(image); // Start observing each lazy image
+    });
+});
 </script>
 </body>
 </html>
