@@ -5,6 +5,7 @@ html, body {
   height: 100%;
   background-color: black;
   overflow: auto; /* Allow scrolling after animation */
+  
 }
 
 .sub {
@@ -57,7 +58,7 @@ html, body {
 .text {
   color: white;
   position: absolute;
-  top: 35em;
+  top: 18em;
   transform: translateY(0);
   text-align: center;
   justify-content: center;
@@ -233,8 +234,8 @@ p {
 }
 .storytwo {
   font-size: 2em;
-  width: 100%;
-  padding-right:15px;
+  
+  padding-right: 15px;
 }
 .pagetitle {
   font-size: 3em;
@@ -246,6 +247,7 @@ p {
 @media (max-width: 540px) {
   .text {
     font-size: 1em;
+    padding-top: 21em;
   }
 
   .ender {
