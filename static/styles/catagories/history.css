@@ -247,9 +247,11 @@ p {
 @media (max-width: 540px) {
   .text {
     font-size: 1em;
-    padding-top: 21em;
+    padding-top: 16em;
   }
-
+.T2 p{
+  font-size: 1.2em;
+}
   .ender {
     font-size: 1.5em;
   }
