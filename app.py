@@ -1,64 +1,98 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, session, redirect, url_for
 from waitress import serve
-from flask import Flask, url_for
 import os
 
 app = Flask(__name__)
 app.debug = False
+app.secret_key = "little_beach"
 
-@app.route('/')
-@app.route('/index')
+PASSWORD = "oldvinefarms" 
+
+@app.route("/", methods=["GET", "POST"])
+def password():
+    if "authenticated" in session:
+        return redirect(url_for("index"))  # Redirect to the main page after login
+
+    if request.method == "POST":
+        if request.form["password"] == PASSWORD:
+            session["authenticated"] = True
+            return redirect(url_for("index"))  # Go to main page
+        else:
+            return "Incorrect password. Try again.", 403
+
+    return render_template("password.html")  # Renders the password input page
+
+@app.route("/logout")
+def logout():
+    session.pop("authenticated", None)
+    return redirect(url_for("password"))
+
+# Protected Routes
+@app.route("/index")
 def index():
-    return render_template('index.html')
+    if "authenticated" not in session:
+        return redirect(url_for("password"))  # Protect the main page
+    return render_template("index.html")
 
-
-
-@app.route('/menu')
+@app.route("/menu")
 def menu():
-    return render_template('menu.html')
+    if "authenticated" not in session:
+        return redirect(url_for("password"))
+    return render_template("menu.html")
 
-@app.route('/catagories/history')
+@app.route("/catagories/history")
 def history():
-    return render_template('catagories/history.html')
+    if "authenticated" not in session:
+        return redirect(url_for("password"))
+    return render_template("catagories/history.html")
 
-@app.route('/catagories/preserving')
+@app.route("/catagories/preserving")
 def preserving():
-    return render_template('catagories/preserving.html')
+    if "authenticated" not in session:
+        return redirect(url_for("password"))
+    return render_template("catagories/preserving.html")
 
-@app.route('/catagories/vineyard')
+@app.route("/catagories/vineyard")
 def vineyard():
-    return render_template('catagories/vineyard.html')
+    if "authenticated" not in session:
+        return redirect(url_for("password"))
+    return render_template("catagories/vineyard.html")
 
-
-@app.route('/contact')
+@app.route("/contact")
 def contact():
-    return render_template('contact.html')
+    if "authenticated" not in session:
+        return redirect(url_for("password"))
+    return render_template("contact.html")
 
-@app.route('/navigation')
+@app.route("/navigation")
 def navigation():
-    return render_template('navigation.html')
+    if "authenticated" not in session:
+        return redirect(url_for("password"))
+    return render_template("navigation.html")
 
-@app.route('/footer')
+@app.route("/footer")
 def footer():
-    return render_template('footer.html')
+    if "authenticated" not in session:
+        return redirect(url_for("password"))
+    return render_template("footer.html")
 
-@app.route('/home')
+@app.route("/home")
 def home():
-    return render_template('home.html')
+    if "authenticated" not in session:
+        return redirect(url_for("password"))
+    return render_template("home.html")
 
-@app.route('/credits')
+@app.route("/credits")
 def credits():
-    return render_template('credits.html')
+    if "authenticated" not in session:
+        return redirect(url_for("password"))
+    return render_template("credits.html")
 
-@app.route('/flickity')
+@app.route("/flickity")
 def flickity():
-    return render_template('flickity.html')
+    if "authenticated" not in session:
+        return redirect(url_for("password"))
+    return render_template("flickity.html")
 
-
-  
 if __name__ == "__main__":
-   serve(app, host="0.0.0.0", port=4000)
-
-
-#if __name__ == '__main__':
-   #app.run(host='0.0.0.0') 
+    serve(app, host="0.0.0.0", port=4000)
