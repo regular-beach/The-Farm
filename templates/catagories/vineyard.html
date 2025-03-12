@@ -142,30 +142,37 @@
 <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
 <script src="https://unpkg.com/packery@2.1.2/dist/packery.pkgd.min.js"></script>
 <script>
-//for loading
-window.addEventListener('load', () => {
-    // Hide the loading screen
-    const loadingScreen = document.getElementById('loading-screen');
-    const mainContent = document.getElementById('main-content');
+window.addEventListener("load", () => {
+    // Hide the loading screen and show the content
+    document.getElementById("loading-screen").style.display = "none";
+    document.getElementById("main-content").style.display = "block";
 
-    loadingScreen.style.display = 'none'; // Hide the loading screen
-    mainContent.style.display = 'block'; // Show the main content
+    const grid = document.querySelector(".grid");
+    if (!grid) return;
+
+    const pckry = new Packery(grid, {
+        itemSelector: ".grid-item",
+        percentPosition: true,
+    });
+
+    // Ensure layout happens AFTER all images & videos are fully loaded
+    imagesLoaded(grid, { background: true }).on("always", function () {
+        pckry.layout();
+    });
+
+    // Also re-layout after videos are loaded
+    const videos = grid.querySelectorAll("video");
+    let loadedVideos = 0;
+
+    videos.forEach((video) => {
+        video.addEventListener("loadeddata", () => {
+            loadedVideos++;
+            if (loadedVideos === videos.length) {
+                pckry.layout();
+            }
+        });
+    });
 });
-
-    window.onload = () => {
-        const grid = document.querySelector('.grid');
-        if (!grid) return; // Avoid errors if grid is not found
-
-        const pckry = new Packery(grid, {
-            itemSelector: '.grid-item',
-            percentPosition: true
-        });
-
-        // Ensure layout happens after ALL images are loaded
-        imagesLoaded(grid).on('always', function () {
-            pckry.layout();
-        });
-    };
 </script>
 
 </body>
