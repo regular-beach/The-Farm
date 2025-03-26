@@ -165,7 +165,7 @@
    // mainContent.style.display = 'block'; // Show the main content
 //});
 
-window.onload = () => {
+wwindow.onload = () => {
     const grid = document.querySelector('.grid');
     if (!grid) return;
 
@@ -197,31 +197,52 @@ window.onload = () => {
 
 document.addEventListener("DOMContentLoaded", function () {
     const lazyImages = document.querySelectorAll('.grid-item img');
+    const lazyVideos = document.querySelectorAll('.grid-item video');
 
     const lazyLoad = (entries, observer) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting && !entry.target.complete) {
-                const img = entry.target;
-                const src = img.dataset.src;  // Use data-src for lazy loading
-                if (src) {
-                    img.src = src;
-                    img.onload = () => {
-                        img.classList.add('loaded');  // Optional: add a class for styling once loaded
-                        observer.unobserve(img);     // Stop observing once the image is loaded
-                    };
+            const target = entry.target;
+
+            if (entry.isIntersecting) {
+                if (target.tagName === 'IMG') {
+                    const src = target.dataset.src;  // For images, use data-src
+                    if (src) {
+                        target.src = src;
+                        target.onload = () => {
+                            target.classList.add('loaded');  // Optional: add a class for styling once loaded
+                            observer.unobserve(target);     // Stop observing once the image is loaded
+                        };
+                    }
+                } else if (target.tagName === 'VIDEO') {
+                    const src = target.querySelector('source').dataset.src;  // For videos, use source data-src
+                    if (src) {
+                        target.querySelector('source').src = src;
+                        target.load();  // Reload the video to apply the new source
+                        target.oncanplaythrough = () => {
+                            target.classList.add('loaded');  // Optional: add a class for styling once loaded
+                            observer.unobserve(target);     // Stop observing once the video is loaded
+                        };
+                    }
                 }
             }
         });
     };
 
     const observer = new IntersectionObserver(lazyLoad, {
-        rootMargin: '0px 0px 200px 0px'  // Load images before they are fully in the viewport
+        rootMargin: '0px 0px 200px 0px'  // Load images/videos before they are fully in the viewport
     });
 
+    // Observe images
     lazyImages.forEach(img => {
-        if (!img.complete) observer.observe(img);  // Observe only images that aren't already loaded
+        observer.observe(img);
+    });
+
+    // Observe videos
+    lazyVideos.forEach(video => {
+        observer.observe(video);
     });
 });
+
 
 </script>
 </body>
