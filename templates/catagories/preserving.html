@@ -176,9 +176,16 @@ window.onload = () => {
 
     // Ensure all grid items have a reserved space
     document.querySelectorAll('.grid-item img, .grid-item video').forEach(item => {
-        if (!item.hasAttribute('width') || !item.hasAttribute('height')) {
+        if (item.complete) {
+            // Image is already loaded, set aspect ratio
             const aspectRatio = item.naturalWidth / item.naturalHeight;
             item.style.aspectRatio = aspectRatio ? `${aspectRatio} / 1` : "16 / 9";
+        } else {
+            // Image is not loaded yet, set aspect ratio on load
+            item.onload = () => {
+                const aspectRatio = item.naturalWidth / item.naturalHeight;
+                item.style.aspectRatio = aspectRatio ? `${aspectRatio} / 1` : "16 / 9";
+            };
         }
     });
 
@@ -193,26 +200,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const lazyLoad = (entries, observer) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
+            if (entry.isIntersecting && !entry.target.complete) {
                 const img = entry.target;
-                const src = img.dataset.src || img.src; // Use data-src, fallback to src
-                img.src = src;
-                img.onload = () => {
-                    img.classList.add('loaded'); // Optional styling hook
-                    observer.unobserve(img);
-                };
+                const src = img.dataset.src;  // Use data-src for lazy loading
+                if (src) {
+                    img.src = src;
+                    img.onload = () => {
+                        img.classList.add('loaded');  // Optional: add a class for styling once loaded
+                        observer.unobserve(img);     // Stop observing once the image is loaded
+                    };
+                }
             }
         });
     };
 
     const observer = new IntersectionObserver(lazyLoad, {
-        rootMargin: '0px 0px 200px 0px'
+        rootMargin: '0px 0px 200px 0px'  // Load images before they are fully in the viewport
     });
 
     lazyImages.forEach(img => {
-        if (!img.complete) observer.observe(img);
+        if (!img.complete) observer.observe(img);  // Observe only images that aren't already loaded
     });
 });
+
 </script>
 </body>
 </html>
