@@ -138,17 +138,15 @@
 <script src="https://unpkg.com/packery@2.1.2/dist/packery.pkgd.min.js"></script>
 <script>
 window.addEventListener("load", () => {
-    // Hide the loading screen and show the content
-    document.getElementById("loading-screen").style.display = "none";
-    document.getElementById("main-content").style.display = "block";
+    //for loading
+//window.addEventListener('load', () => {
+    // Hide the loading screen
+    //const loadingScreen = document.getElementById('loading-screen');
+    //const mainContent = document.getElementById('main-content');
 
-    const grid = document.querySelector(".grid");
-    if (!grid) return;
-
-    const pckry = new Packery(grid, {
-        itemSelector: ".grid-item",
-        percentPosition: true,
-    });
+    //loadingScreen.style.display = 'none'; // Hide the loading screen
+   // mainContent.style.display = 'block'; // Show the main content
+//});
 
     // Ensure layout happens AFTER all images & videos are fully loaded
     imagesLoaded(grid, { background: true }).on("always", function () {

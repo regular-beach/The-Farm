@@ -36,9 +36,7 @@
     <div class="grid-item">
         <img src="{{ url_for('static', filename='/img/preserving/IMG_0437.jpg') }}">
     </div>
-    <div class="grid-item">
-        <img src="{{ url_for('static', filename='/img/preserving/preservingfood.jpg') }}">
-    </div>
+ 
     <div class="grid-item">
         <video autoplay loop muted playsinline>
             <source src="{{ url_for('static', filename='/img/preserving/walnutdye.webm') }}" type="video/webm">
@@ -158,14 +156,14 @@
 <script src="https://unpkg.com/packery@2.1.2/dist/packery.pkgd.min.js"></script>
 <script>
 //for loading
-window.addEventListener('load', () => {
+//window.addEventListener('load', () => {
     // Hide the loading screen
-    const loadingScreen = document.getElementById('loading-screen');
-    const mainContent = document.getElementById('main-content');
+    //const loadingScreen = document.getElementById('loading-screen');
+    //const mainContent = document.getElementById('main-content');
 
-    loadingScreen.style.display = 'none'; // Hide the loading screen
-    mainContent.style.display = 'block'; // Show the main content
-});
+    //loadingScreen.style.display = 'none'; // Hide the loading screen
+   // mainContent.style.display = 'block'; // Show the main content
+//});
 
  window.onload = () => {
     const grid = document.querySelector('.grid');
