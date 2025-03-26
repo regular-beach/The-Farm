@@ -148,12 +148,12 @@ window.onload = () => {
 
     // Ensure all grid items have a reserved space
     document.querySelectorAll('.grid-item img, .grid-item video').forEach(item => {
-        if (item.complete) {
-            // Image is already loaded, set aspect ratio
-            const aspectRatio = item.naturalWidth / item.naturalHeight;
+        if (item.complete || item.readyState >= 2) {
+            const aspectRatio = item.tagName === 'IMG' 
+                ? item.naturalWidth / item.naturalHeight 
+                : item.videoWidth / item.videoHeight;
             item.style.aspectRatio = aspectRatio ? `${aspectRatio} / 1` : "16 / 9";
         } else {
-            // Image is not loaded yet, set aspect ratio on load
             item.onload = () => {
                 const aspectRatio = item.naturalWidth / item.naturalHeight;
                 item.style.aspectRatio = aspectRatio ? `${aspectRatio} / 1` : "16 / 9";
@@ -177,43 +177,41 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (entry.isIntersecting) {
                 if (target.tagName === 'IMG') {
-                    const src = target.dataset.src;  // For images, use data-src
+                    const src = target.dataset.src;
                     if (src) {
                         target.src = src;
                         target.onload = () => {
-                            target.classList.add('loaded');  // Optional: add a class for styling once loaded
-                            observer.unobserve(target);     // Stop observing once the image is loaded
+                            target.classList.add('loaded');
+                            observer.unobserve(target);
                         };
                     }
                 } else if (target.tagName === 'VIDEO') {
-                    const src = target.querySelector('source').dataset.src;  // For videos, use source data-src
-                    if (src) {
-                        target.querySelector('source').src = src;
-                        target.load();  // Reload the video to apply the new source
-                        target.oncanplaythrough = () => {
-                            target.classList.add('loaded');  // Optional: add a class for styling once loaded
-                            observer.unobserve(target);     // Stop observing once the video is loaded
-                        };
-                    }
+                    const sources = target.querySelectorAll('source');
+                    let loaded = false;
+                    sources.forEach(source => {
+                        if (source.dataset.src) {
+                            source.src = source.dataset.src;
+                            loaded = true;
+                        }
+                    });
+                    if (loaded) target.load();
+                    target.onloadedmetadata = () => {
+                        target.classList.add('loaded');
+                        observer.unobserve(target);
+                    };
                 }
             }
         });
     };
 
     const observer = new IntersectionObserver(lazyLoad, {
-        rootMargin: '0px 0px 200px 0px'  // Load images/videos before they are fully in the viewport
+        rootMargin: '0px 0px 200px 0px'
     });
 
-    // Observe images
-    lazyImages.forEach(img => {
-        observer.observe(img);
-    });
-
-    // Observe videos
-    lazyVideos.forEach(video => {
-        observer.observe(video);
-    });
+    lazyImages.forEach(img => observer.observe(img));
+    lazyVideos.forEach(video => observer.observe(video));
 });
+
 
 </script>
 
