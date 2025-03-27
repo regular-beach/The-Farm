@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', filename='styles/base.css') }}" rel="stylesheet" />
     <link href="{{ url_for('static', filename='styles/catagories/history.css') }}" rel="stylesheet" />
     <link href="{{ url_for('static', filename='styles/catagories/catagory.css') }}" rel="stylesheet" />
-    <link href="{{ url_for('static', filename='styles/loading.css') }}" rel="stylesheet" />
     <title>History & Restoration</title>
 </head>
 <body>
@@ -326,12 +326,9 @@ checkVisibility();
 
     // Ensure all grid items have a reserved space
     document.querySelectorAll('.grid-item img, .grid-item video').forEach(item => {
-        if (!item.hasAttribute('width') || !item.hasAttribute('height')) {
-            const aspectRatio = item.naturalWidth / item.naturalHeight;
-            item.style.aspectRatio = aspectRatio ? `${aspectRatio} / 1` : "16 / 9";
-        }
-    });
-
+    item.style.width = "100%"; // Ensure they take the full width of their container
+    item.style.height = "auto"; // Maintain original proportions
+});
     // Load all images/videos before initializing Packery
     imagesLoaded(grid, function() {
         pckry.layout();

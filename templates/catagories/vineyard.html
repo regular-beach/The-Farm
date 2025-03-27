@@ -7,7 +7,6 @@
     <link href="{{ url_for('static', filename='styles/base.css') }}" rel="stylesheet" />
     <link href="{{ url_for('static', filename='styles/catagories/catagory.css') }}" rel="stylesheet" />
     <link href="{{ url_for('static', filename='styles/catagories/vineyard.css') }}" rel="stylesheet" />
-    <link href="{{ url_for('static', filename='styles/loading.css') }}" rel="stylesheet" />
    
 
 </head>
@@ -149,18 +148,9 @@ window.onload = () => {
 
     // Ensure all grid items have a reserved space
     document.querySelectorAll('.grid-item img, .grid-item video').forEach(item => {
-        if (item.complete || item.readyState >= 2) {
-            const aspectRatio = item.tagName === 'IMG' 
-                ? item.naturalWidth / item.naturalHeight 
-                : item.videoWidth / item.videoHeight;
-            item.style.aspectRatio = aspectRatio ? `${aspectRatio} / 1` : "16 / 9";
-        } else {
-            item.onload = () => {
-                const aspectRatio = item.naturalWidth / item.naturalHeight;
-                item.style.aspectRatio = aspectRatio ? `${aspectRatio} / 1` : "16 / 9";
-            };
-        }
-    });
+    item.style.width = "100%"; // Ensure they take the full width of their container
+    item.style.height = "auto"; // Maintain original proportions
+});
 
     // Load all images/videos before initializing Packery
     imagesLoaded(grid, function() {
