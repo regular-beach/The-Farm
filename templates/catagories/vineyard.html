@@ -156,6 +156,10 @@ window.onload = () => {
     imagesLoaded(grid, function() {
         pckry.layout();
     });
+    imagesLoaded(grid, function() {
+    pckry.layout(); // Existing code
+    setTimeout(() => pckry.layout(), 500); // Extra layout call for better positioning
+});
 };
 
 document.addEventListener("DOMContentLoaded", function () {
