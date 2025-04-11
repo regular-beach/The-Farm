@@ -173,19 +173,12 @@ window.onload = () => {
         percentPosition: true
     });
 
-    // Ensure all grid items have a reserved space
-    document.querySelectorAll('.grid-item img, .grid-item video').forEach(item => {
-    item.style.width = "100%"; // Ensure they take the full width of their container
-    item.style.height = "auto"; // Maintain original proportions
-});
-
     // Load all images/videos before initializing Packery
-    imagesLoaded(grid, function() {
+    imagesLoaded(grid, function () {
         pckry.layout();
     });
-};
 
-document.addEventListener("DOMContentLoaded", function () {
+    // Lazy loading logic with Packery relayout on load
     const lazyImages = document.querySelectorAll('.grid-item img');
     const lazyVideos = document.querySelectorAll('.grid-item video');
 
@@ -195,43 +188,39 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (entry.isIntersecting) {
                 if (target.tagName === 'IMG') {
-                    const src = target.dataset.src;  // For images, use data-src
+                    const src = target.dataset.src;
                     if (src) {
                         target.src = src;
                         target.onload = () => {
-                            target.classList.add('loaded');  // Optional: add a class for styling once loaded
-                            observer.unobserve(target);     // Stop observing once the image is loaded
+                            target.classList.add('loaded');
+                            observer.unobserve(target);
+                            pckry.layout(); // ← Trigger re-layout here
                         };
                     }
                 } else if (target.tagName === 'VIDEO') {
-                    const src = target.querySelector('source').dataset.src;  // For videos, use source data-src
-                    if (src) {
-                        target.querySelector('source').src = src;
-                        target.load();  // Reload the video to apply the new source
-                        target.oncanplaythrough = () => {
-                            target.classList.add('loaded');  // Optional: add a class for styling once loaded
-                            observer.unobserve(target);     // Stop observing once the video is loaded
-                        };
-                    }
+                    const sources = target.querySelectorAll('source');
+                    sources.forEach(source => {
+                        source.src = source.dataset.src;
+                    });
+                    target.load();
+                    target.oncanplaythrough = () => {
+                        target.classList.add('loaded');
+                        observer.unobserve(target);
+                        pckry.layout(); // ← Trigger re-layout here too
+                    };
                 }
             }
         });
     };
 
     const observer = new IntersectionObserver(lazyLoad, {
-        rootMargin: '0px 0px 200px 0px'  // Load images/videos before they are fully in the viewport
+        rootMargin: '0px 0px 200px 0px'
     });
 
-    // Observe images
-    lazyImages.forEach(img => {
-        observer.observe(img);
-    });
+    lazyImages.forEach(img => observer.observe(img));
+    lazyVideos.forEach(video => observer.observe(video));
 
-    // Observe videos
-    lazyVideos.forEach(video => {
-        observer.observe(video);
-    });
-});
+};
 
 </script>
 </body>

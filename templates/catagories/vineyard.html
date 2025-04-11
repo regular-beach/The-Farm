@@ -146,23 +146,12 @@ window.onload = () => {
         percentPosition: true
     });
 
-    // Ensure all grid items have a reserved space
-    document.querySelectorAll('.grid-item img, .grid-item video').forEach(item => {
-    item.style.width = "100%"; // Ensure they take the full width of their container
-    item.style.height = "auto"; // Maintain original proportions
-});
-
     // Load all images/videos before initializing Packery
-    imagesLoaded(grid, function() {
+    imagesLoaded(grid, function () {
         pckry.layout();
     });
-    imagesLoaded(grid, function() {
-    pckry.layout(); // Existing code
-    setTimeout(() => pckry.layout(), 500); // Extra layout call for better positioning
-});
-};
 
-document.addEventListener("DOMContentLoaded", function () {
+    // Lazy loading logic with Packery relayout on load
     const lazyImages = document.querySelectorAll('.grid-item img');
     const lazyVideos = document.querySelectorAll('.grid-item video');
 
@@ -178,21 +167,19 @@ document.addEventListener("DOMContentLoaded", function () {
                         target.onload = () => {
                             target.classList.add('loaded');
                             observer.unobserve(target);
+                            pckry.layout(); // ← Trigger re-layout here
                         };
                     }
                 } else if (target.tagName === 'VIDEO') {
                     const sources = target.querySelectorAll('source');
-                    let loaded = false;
                     sources.forEach(source => {
-                        if (source.dataset.src) {
-                            source.src = source.dataset.src;
-                            loaded = true;
-                        }
+                        source.src = source.dataset.src;
                     });
-                    if (loaded) target.load();
-                    target.onloadedmetadata = () => {
+                    target.load();
+                    target.oncanplaythrough = () => {
                         target.classList.add('loaded');
                         observer.unobserve(target);
+                        pckry.layout(); // ← Trigger re-layout here too
                     };
                 }
             }
@@ -205,7 +192,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     lazyImages.forEach(img => observer.observe(img));
     lazyVideos.forEach(video => observer.observe(video));
-});
+
+};
 
 
 </script>
