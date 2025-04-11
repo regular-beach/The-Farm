@@ -350,6 +350,20 @@
                             target.classList.add('loaded');
                             pckry.layout(); // ← Relayout after video loads
                             observer.unobserve(target);
+
+                            const pckry = new Packery(grid, {
+                            itemSelector: '.grid-item',
+                             percentPosition: true
+                                                });
+
+                            const layoutPackery = () => pckry.layout(); // helper to clean up syntax
+
+                            // Inside your lazyLoad function (where you handle image load):
+                            img.onload = () => {
+                            img.classList.add('loaded');
+                            observer.unobserve(img);
+                            layoutPackery(); // 
+                                                };
                         };
                     }
                 }
