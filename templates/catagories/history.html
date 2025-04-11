@@ -364,6 +364,11 @@
                             observer.unobserve(img);
                             layoutPackery(); // 
                                                 };
+                                                video.oncanplaythrough = () => {
+                            video.classList.add('loaded');
+                             observer.unobserve(video);
+                            layoutPackery(); // 👈 also reflow here
+};
                         };
                     }
                 }
