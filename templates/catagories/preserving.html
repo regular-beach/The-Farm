@@ -173,14 +173,12 @@ window.onload = () => {
         percentPosition: true
     });
 
-    const layoutPackery = () => pckry.layout();
-
-    // Ensure layout after all images/videos are loaded initially
-    imagesLoaded(grid, () => {
-        layoutPackery();
+    // Load all images/videos before initializing Packery
+    imagesLoaded(grid, function () {
+        pckry.layout();
     });
 
-    // Lazy loading logic
+    // Lazy loading logic with Packery relayout on load
     const lazyImages = document.querySelectorAll('.grid-item img');
     const lazyVideos = document.querySelectorAll('.grid-item video');
 
@@ -196,29 +194,34 @@ window.onload = () => {
                         target.onload = () => {
                             target.classList.add('loaded');
                             observer.unobserve(target);
-                            layoutPackery();
+                            pckry.layout(); // ← Trigger re-layout here
                         };
                     }
                 } else if (target.tagName === 'VIDEO') {
                     const sources = target.querySelectorAll('source');
                     sources.forEach(source => {
-                        const src = source.dataset.src;
-                        if (src) {
-                            source.src = src;
-                        }
+                        source.src = source.dataset.src;
                     });
-
                     target.load();
-
-                    target.addEventListener('loadedmetadata', () => {
-                        layoutPackery();
-                    });
-
-                    target.addEventListener('canplaythrough', () => {
+                    target.oncanplaythrough = () => {
                         target.classList.add('loaded');
                         observer.unobserve(target);
-                        layoutPackery();
-                    });
+                        pckry.layout(); // ← Trigger re-layout here too
+                        const pckry = new Packery(grid, {
+  itemSelector: '.grid-item',
+  percentPosition: true
+});
+
+const layoutPackery = () => pckry.layout(); // helper to clean up syntax
+
+// Inside your lazyLoad function (where you handle image load):
+img.onload = () => {
+  img.classList.add('loaded');
+  observer.unobserve(img);
+  layoutPackery(); // 👈 force re-layout after each image load
+};
+
+                    };
                 }
             }
         });
@@ -228,13 +231,10 @@ window.onload = () => {
         rootMargin: '0px 0px 200px 0px'
     });
 
-    lazyImages.forEach(img => {
-        if (!img.complete) observer.observe(img);
-    });
-
+    lazyImages.forEach(img => observer.observe(img));
     lazyVideos.forEach(video => observer.observe(video));
-};
 
+};
 
 </script>
 </body>
