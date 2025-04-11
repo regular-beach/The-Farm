@@ -12,10 +12,10 @@
 
 
 <body>
-     <div id="loading-screen">
+     <!--<div id="loading-screen">
         <p id="loading-text">Loading</p>
     </div>
-    <div id="main-content" style="display:none;"> 
+    <div id="main-content" style="display:none;"> --> 
     {% include 'navigation.html' %}
 
     <div class="hero-container">
@@ -25,149 +25,125 @@
 
 <div class="grid">
     <div class="grid-item">
-        <img src="{{ url_for('static', filename='/img/preserving/01.jpg') }}">
+        <img data-src="{{ url_for('static', filename='/img/preserving/01.jpg') }}">
     </div>
-    
+
     <div class="grid-item">
         <video autoplay loop muted playsinline>
-            <source src="{{ url_for('static', filename='/img/preserving/preserving.mp4') }}" type="video/mp4">
+            <source data-src="{{ url_for('static', filename='/img/preserving/preserving.mp4') }}" type="video/mp4">
         </video>
     </div>
-    
     <div class="grid-item">
-        <img src="{{ url_for('static', filename='/img/preserving/IMG_0437.jpg') }}">
+        <img data-src="{{ url_for('static', filename='/img/preserving/IMG_0437.jpg') }}">
     </div>
-    
+ 
     <div class="grid-item">
         <video autoplay loop muted playsinline>
-            <source src="{{ url_for('static', filename='/img/preserving/walnutdye.webm') }}" type="video/webm">
-            <source src="{{ url_for('static', filename='/img/preserving/walnutdye.mp4') }}" type="video/mp4">
+            <source data-src="{{ url_for('static', filename='/img/preserving/walnutdye.webm') }}" type="video/webm">
+            <source data-src="{{ url_for('static', filename='/img/preserving/walnutdye.mp4') }}" type="video/mp4">
         </video>
     </div>
-    
     <div class="grid-item">
         <video autoplay loop muted playsinline>
-            <source src="{{ url_for('static', filename='/img/preserving/sauce.webm') }}" type="video/webm">
-            <source src="{{ url_for('static', filename='/img/preserving/sauce.mp4') }}" type="video/mp4">
+            <source data-src="{{ url_for('static', filename='/img/preserving/sauce.webm') }}" type="video/webm">
+            <source data-src="{{ url_for('static', filename='/img/preserving/sauce.mp4') }}" type="video/mp4">
         </video>
     </div>
-    
     <div class="grid-item">
-        <img src="{{ url_for('static', filename='/img/preserving/IMG_4144.jpg') }}">
+        <img data-src="{{ url_for('static', filename='/img/preserving/IMG_4144.jpg') }}">
     </div>
-    
     <div class="grid-item">
-        <img src="{{ url_for('static', filename='/img/preserving/IMG_5115.jpg') }}">
+        <img data-src="{{ url_for('static', filename='/img/preserving/IMG_5115.jpg') }}">
     </div>
-    
     <div class="grid-item">
-        <img src="{{ url_for('static', filename='/img/preserving/IMG_6457.jpg') }}">
+        <img data-src="{{ url_for('static', filename='/img/preserving/IMG_6457.jpg') }}">
     </div>
-    
+
     <div class="grid-item">
-        <img src="{{ url_for('static', filename='/img/preserving/IMG_6645.jpg') }}">
+        <img data-src="{{ url_for('static', filename='/img/preserving/IMG_6645.jpg') }}">
     </div>
-    
     <div class="grid-item">
-        <img src="{{ url_for('static', filename='/img/preserving/IMG_6931.jpg') }}">
+        <img data-src="{{ url_for('static', filename='/img/preserving/IMG_6931.jpg') }}">
     </div>
-    
     <div class="grid-item">
-        <img src="{{ url_for('static', filename='/img/preserving/03.jpg') }}">
+        <img data-src="{{ url_for('static', filename='/img/preserving/03.jpg') }}">
     </div>
-    
+ 
     <div class="grid-item">
-        <img src="{{ url_for('static', filename='/img/preserving/IMG_6997.jpg') }}">
+        <img data-src="{{ url_for('static', filename='/img/preserving/IMG_6997.jpg') }}">
     </div>
-    
     <div class="grid-item">
-        <img src="{{ url_for('static', filename='/img/preserving/IMG_7085.jpg') }}">
+        <img data-src="{{ url_for('static', filename='/img/preserving/IMG_7085.jpg') }}">
     </div>
-    
     <div class="grid-item">
-        <img src="{{ url_for('static', filename='/img/preserving/IMG_7375.jpg') }}">
+        <img data-src="{{ url_for('static', filename='/img/preserving/IMG_7375.jpg') }}">
     </div>
-    
     <div class="grid-item">
-        <img src="{{ url_for('static', filename='/img/preserving/IMG_7472.jpg') }}">
+        <img data-src="{{ url_for('static', filename='/img/preserving/IMG_7472.jpg') }}">
     </div>
-    
     <div class="grid-item">
-        <img src="{{ url_for('static', filename='/img/preserving/IMG_7864.jpg') }}">
+        <img data-src="{{ url_for('static', filename='/img/preserving/IMG_7864.jpg') }}">
     </div>
-    
     <div class="grid-item">
         <video autoplay loop muted playsinline>
-            <source src="{{ url_for('static', filename='/img/preserving/cider2.webm') }}" type="video/webm">
-            <source src="{{ url_for('static', filename='/img/preserving/cider2.mp4') }}" type="video/mp4">
+            <source data-src="{{ url_for('static', filename='/img/preserving/cider2.webm') }}" type="video/webm">
+            <source data-src="{{ url_for('static', filename='/img/preserving/cider2.mp4') }}" type="video/mp4">
         </video>
     </div>
-    
     <div class="grid-item">
         <video autoplay loop muted playsinline>
-            <source src="{{ url_for('static', filename='/img/preserving/preserving2.mp4') }}" type="video/mp4">
+            <source data-src="{{ url_for('static', filename='/img/preserving/preserving2.mp4') }}" type="video/mp4">
         </video>
     </div>
-    
     <div class="grid-item">
-        <img src="{{ url_for('static', filename='/img/preserving/HERO1.jpg') }}">
+        <img data-src="{{ url_for('static', filename='/img/preserving/HERO1.jpg') }}">
     </div>
-    
     <div class="grid-item">
-        <img src="{{ url_for('static', filename='/img/preserving/IMG_8216.jpg') }}">
+        <img data-src="{{ url_for('static', filename='/img/preserving/IMG_8216.jpg') }}">
     </div>
-    
+
+ 
     <div class="grid-item">
-        <img src="{{ url_for('static', filename='/img/preserving/IMG_8270.jpg') }}">
+        <img data-src="{{ url_for('static', filename='/img/preserving/IMG_8270.jpg') }}">
     </div>
-    
     <div class="grid-item">
-        <img src="{{ url_for('static', filename='/img/preserving/IMG_8291.jpg') }}">
+        <img data-src="{{ url_for('static', filename='/img/preserving/IMG_8291.jpg') }}">
     </div>
-    
     <div class="grid-item">
-        <img src="{{ url_for('static', filename='/img/preserving/IMG_8300.jpg') }}">
+        <img data-src="{{ url_for('static', filename='/img/preserving/IMG_8300.jpg') }}">
     </div>
-    
     <div class="grid-item">
-        <img src="{{ url_for('static', filename='/img/preserving/IMG_8681.jpg') }}">
+        <img data-src="{{ url_for('static', filename='/img/preserving/IMG_8681.jpg') }}">
     </div>
-    
     <div class="grid-item">
         <video autoplay loop muted playsinline>
-            <source src="{{ url_for('static', filename='/img/preserving/pulp.mp4') }}" type="video/mp4">
+            <source data-src="{{ url_for('static', filename='/img/preserving/pulp.mp4') }}" type="video/mp4">
         </video>
     </div>
-    
     <div class="grid-item">
-        <img src="{{ url_for('static', filename='/img/preserving/IMG_0507.jpg') }}">
+        <img data-src="{{ url_for('static', filename='/img/preserving/IMG_0507.jpg') }}">
     </div>
-    
     <div class="grid-item">
-        <img src="{{ url_for('static', filename='/img/preserving/IMG_8716.jpg') }}">
+        <img data-src="{{ url_for('static', filename='/img/preserving/IMG_8716.jpg') }}">
     </div>
-    
     <div class="grid-item">
         <video autoplay loop muted playsinline>
-            <source src="{{ url_for('static', filename='/img/preserving/labels4.webm') }}" type="video/webm">
-            <source src="{{ url_for('static', filename='/img/preserving/labels4.mp4') }}" type="video/mp4">
+            <source data-src="{{ url_for('static', filename='/img/preserving/labels4.webm') }}" type="video/webm">
+            <source data-src="{{ url_for('static', filename='/img/preserving/labels4.mp4') }}" type="video/mp4">
         </video>
     </div>
-    
     <div class="grid-item">
-        <img src="{{ url_for('static', filename='/img/preserving/IMG_9268.jpg') }}">
+        <img data-src="{{ url_for('static', filename='/img/preserving/IMG_9268.jpg') }}">
     </div>
-    
+
     <div class="grid-item">
-        <img src="{{ url_for('static', filename='/img/preserving/02.jpg') }}">
+        <img data-src="{{ url_for('static', filename='/img/preserving/02.jpg') }}">
     </div>
-    
     <div class="grid-item">
         <video autoplay loop muted playsinline>
-            <source src="{{ url_for('static', filename='/img/preserving/cider3.mp4') }}" type="video/mp4">
+            <source data-src="{{ url_for('static', filename='/img/preserving/cider3.mp4') }}" type="video/mp4">
         </video>
     </div>
-    
 
 
 </div>
@@ -180,14 +156,14 @@
 <script src="https://unpkg.com/packery@2.1.2/dist/packery.pkgd.min.js"></script>
 <script>
 //for loading
-window.addEventListener('load', () => {
-     //Hide the loading screen
-    const loadingScreen = document.getElementById('loading-screen');
-    const mainContent = document.getElementById('main-content');
+//window.addEventListener('load', () => {
+    // Hide the loading screen
+    //const loadingScreen = document.getElementById('loading-screen');
+    //const mainContent = document.getElementById('main-content');
 
-    loadingScreen.style.display = 'none'; // Hide the loading screen
-    mainContent.style.display = 'block'; // Show the main content
-});
+    //loadingScreen.style.display = 'none'; // Hide the loading screen
+   // mainContent.style.display = 'block'; // Show the main content
+//});
 
 window.onload = () => {
     const grid = document.querySelector('.grid');
@@ -198,38 +174,68 @@ window.onload = () => {
         percentPosition: true
     });
 
-    const layoutPackery = () => pckry.layout();
-
-    // Ensure layout after all images/videos are loaded initially
-    imagesLoaded(grid, () => {
-        layoutPackery();
+    // Load all images/videos before initializing Packery
+    imagesLoaded(grid, function () {
+        pckry.layout();
     });
 
-    // Ensure all images and videos have correct size for Packery layout
-    document.querySelectorAll('.grid-item img, .grid-item video').forEach(item => {
-        item.style.width = "100%";
-        item.style.height = "auto";
-    });
+    // Lazy loading logic with Packery relayout on load
+    const lazyImages = document.querySelectorAll('.grid-item img');
+    const lazyVideos = document.querySelectorAll('.grid-item video');
 
-    // Text scaling animation on scroll
-    const textElements = document.querySelectorAll('.text');
-    const checkVisibility = () => {
-        textElements.forEach((text) => {
-            const rect = text.getBoundingClientRect();
-            if (rect.top >= 0 && rect.top <= window.innerHeight) {
-                text.style.opacity = '1';
-                text.style.transform = 'scale(1)';
-            } else {
-                text.style.opacity = '0';
-                text.style.transform = 'scale(0.5)';
+    const lazyLoad = (entries, observer) => {
+        entries.forEach(entry => {
+            const target = entry.target;
+
+            if (entry.isIntersecting) {
+                if (target.tagName === 'IMG') {
+                    const src = target.dataset.src;
+                    if (src) {
+                        target.src = src;
+                        target.onload = () => {
+                            target.classList.add('loaded');
+                            observer.unobserve(target);
+                            pckry.layout(); // ← Trigger re-layout here
+                        };
+                    }
+                } else if (target.tagName === 'VIDEO') {
+                    const sources = target.querySelectorAll('source');
+                    sources.forEach(source => {
+                        source.src = source.dataset.src;
+                    });
+                    target.load();
+                    target.oncanplaythrough = () => {
+                        target.classList.add('loaded');
+                        observer.unobserve(target);
+                        pckry.layout(); // ← Trigger re-layout here too
+                        const pckry = new Packery(grid, {
+  itemSelector: '.grid-item',
+  percentPosition: true
+});
+
+const layoutPackery = () => pckry.layout(); // helper to clean up syntax
+
+// Inside your lazyLoad function (where you handle image load):
+img.onload = () => {
+  img.classList.add('loaded');
+  observer.unobserve(img);
+  layoutPackery(); // 👈 force re-layout after each image load
+};
+
+                    };
+                }
             }
         });
     };
 
-    window.addEventListener('scroll', checkVisibility);
-    checkVisibility(); // Check immediately on load
-};
+    const observer = new IntersectionObserver(lazyLoad, {
+        rootMargin: '0px 0px 200px 0px'
+    });
 
+    lazyImages.forEach(img => observer.observe(img));
+    lazyVideos.forEach(video => observer.observe(video));
+
+};
 
 </script>
 </body>
