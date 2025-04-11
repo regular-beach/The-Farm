@@ -146,12 +146,14 @@ window.onload = () => {
         percentPosition: true
     });
 
-    // Load all images/videos before initializing Packery
-    imagesLoaded(grid, function () {
-        pckry.layout();
+    const layoutPackery = () => pckry.layout();
+
+    // Ensure layout after all images/videos are loaded initially
+    imagesLoaded(grid, () => {
+        layoutPackery();
     });
 
-    // Lazy loading logic with Packery relayout on load
+    // Lazy loading logic
     const lazyImages = document.querySelectorAll('.grid-item img');
     const lazyVideos = document.querySelectorAll('.grid-item video');
 
@@ -167,38 +169,29 @@ window.onload = () => {
                         target.onload = () => {
                             target.classList.add('loaded');
                             observer.unobserve(target);
-                            pckry.layout(); // ← Trigger re-layout here
+                            layoutPackery();
                         };
                     }
                 } else if (target.tagName === 'VIDEO') {
                     const sources = target.querySelectorAll('source');
                     sources.forEach(source => {
-                        source.src = source.dataset.src;
+                        const src = source.dataset.src;
+                        if (src) {
+                            source.src = src;
+                        }
                     });
+
                     target.load();
-                    target.oncanplaythrough = () => {
+
+                    target.addEventListener('loadedmetadata', () => {
+                        layoutPackery();
+                    });
+
+                    target.addEventListener('canplaythrough', () => {
                         target.classList.add('loaded');
                         observer.unobserve(target);
-                        pckry.layout(); // ← Trigger re-layout here too
-                        const pckry = new Packery(grid, {
-  itemSelector: '.grid-item',
-  percentPosition: true
-});
-
-const layoutPackery = () => pckry.layout(); // helper to clean up syntax
-
-// Inside your lazyLoad function (where you handle image load):
-img.onload = () => {
-  img.classList.add('loaded');
-  observer.unobserve(img);
-  layoutPackery(); // 👈 force re-layout after each image load
-};
-video.oncanplaythrough = () => {
-  video.classList.add('loaded');
-  observer.unobserve(video);
-  layoutPackery(); // 👈 also reflow here
-};
-                    };
+                        layoutPackery();
+                    });
                 }
             }
         });
@@ -208,10 +201,13 @@ video.oncanplaythrough = () => {
         rootMargin: '0px 0px 200px 0px'
     });
 
-    lazyImages.forEach(img => observer.observe(img));
-    lazyVideos.forEach(video => observer.observe(video));
+    lazyImages.forEach(img => {
+        if (!img.complete) observer.observe(img);
+    });
 
+    lazyVideos.forEach(video => observer.observe(video));
 };
+
 
 
 </script>

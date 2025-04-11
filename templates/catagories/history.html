@@ -280,108 +280,87 @@
 
 
 <script>
-    window.onload = () => {
-        const grid = document.querySelector('.grid');
-        const title = document.querySelector(".pagetitle");
-        const text = document.querySelector(".text");
-        const heroImage = document.querySelector(".hero");
-        const ender = document.querySelector(".ender");
-    
-        if (!grid) return;
-    
-        const pckry = new Packery(grid, {
-            itemSelector: '.grid-item',
-            percentPosition: true
+ window.onload = () => {
+    const grid = document.querySelector('.grid');
+    const textElements = document.querySelectorAll('.text');
+
+    if (!grid) return;
+
+    // Initialize Packery
+    const pckry = new Packery(grid, {
+        itemSelector: '.grid-item',
+        percentPosition: true
+    });
+
+    const layoutPackery = () => pckry.layout(); // helper function
+
+    // Ensure all media take up space for Packery
+    document.querySelectorAll('.grid-item img, .grid-item video').forEach(item => {
+        item.style.width = "100%";
+        item.style.height = "auto";
+    });
+
+    // Trigger layout after all initially loaded images
+    imagesLoaded(grid).on('always', layoutPackery);
+
+    // Text scaling animation on scroll
+    const checkVisibility = () => {
+        textElements.forEach((text) => {
+            const rect = text.getBoundingClientRect();
+            if (rect.top >= 0 && rect.top <= window.innerHeight) {
+                text.style.opacity = '1';
+                text.style.transform = 'scale(1)';
+            } else {
+                text.style.opacity = '0';
+                text.style.transform = 'scale(0.5)';
+            }
         });
-    
-        // Ensure all media have size so Packery can calculate properly
-        document.querySelectorAll('.grid-item img, .grid-item video').forEach(item => {
-            item.style.width = "100%";
-            item.style.height = "auto";
-        });
-    
-        // Trigger layout after all initially loaded images
-        imagesLoaded(grid).on('always', function () {
-            pckry.layout();
-        });
-    
-        // Text scaling animation on scroll
-        const textElements = document.querySelectorAll('.text');
-        const checkVisibility = () => {
-            textElements.forEach((text) => {
-                const rect = text.getBoundingClientRect();
-                if (rect.top >= 0 && rect.top <= window.innerHeight) {
-                    text.style.opacity = '1';
-                    text.style.transform = 'scale(1)';
-                } else {
-                    text.style.opacity = '0';
-                    text.style.transform = 'scale(0.5)';
-                }
-            });
-        };
-        window.addEventListener('scroll', checkVisibility);
-        checkVisibility(); // Check immediately on load
-    
-        // Lazy load with Packery relayout
-        const lazyImages = document.querySelectorAll('.grid-item img');
-        const lazyVideos = document.querySelectorAll('.grid-item video');
-    
-        const lazyLoad = (entries, observer) => {
-            entries.forEach(entry => {
-                const target = entry.target;
-                if (entry.isIntersecting) {
-                    if (target.tagName === 'IMG') {
-                        const src = target.dataset.src;
-                        if (src) {
-                            target.src = src;
-                            target.onload = () => {
-                                target.classList.add('loaded');
-                                pckry.layout(); // ← Relayout after image loads
-                                observer.unobserve(target);
-                            };
-                        }
-                    } else if (target.tagName === 'VIDEO') {
-                        const sources = target.querySelectorAll('source');
-                        sources.forEach(source => {
-                            if (source.dataset.src) source.src = source.dataset.src;
-                        });
-                        target.load();
-                        target.oncanplaythrough = () => {
+    };
+    window.addEventListener('scroll', checkVisibility);
+    checkVisibility(); // Call once on load
+
+    // Lazy load images and videos
+    const lazyImages = document.querySelectorAll('.grid-item img');
+    const lazyVideos = document.querySelectorAll('.grid-item video');
+
+    const lazyLoad = (entries, observer) => {
+        entries.forEach(entry => {
+            const target = entry.target;
+            if (entry.isIntersecting) {
+                if (target.tagName === 'IMG') {
+                    const src = target.dataset.src;
+                    if (src) {
+                        target.src = src;
+                        target.onload = () => {
                             target.classList.add('loaded');
-                            pckry.layout(); // ← Relayout after video loads
                             observer.unobserve(target);
-
-                            const pckry = new Packery(grid, {
-                            itemSelector: '.grid-item',
-                             percentPosition: true
-                                                });
-
-                            const layoutPackery = () => pckry.layout(); // helper to clean up syntax
-
-                            // Inside your lazyLoad function (where you handle image load):
-                            img.onload = () => {
-                            img.classList.add('loaded');
-                            observer.unobserve(img);
-                            layoutPackery(); // 
-                                                };
-                                                video.oncanplaythrough = () => {
-                            video.classList.add('loaded');
-                             observer.unobserve(video);
-                            layoutPackery(); // 👈 also reflow here
-};
+                            layoutPackery();
                         };
                     }
+                } else if (target.tagName === 'VIDEO') {
+                    const sources = target.querySelectorAll('source');
+                    sources.forEach(source => {
+                        if (source.dataset.src) source.src = source.dataset.src;
+                    });
+                    target.load();
+                    target.oncanplaythrough = () => {
+                        target.classList.add('loaded');
+                        observer.unobserve(target);
+                        layoutPackery();
+                    };
                 }
-            });
-        };
-    
-        const observer = new IntersectionObserver(lazyLoad, {
-            rootMargin: '0px 0px 200px 0px'
+            }
         });
-    
-        lazyImages.forEach(img => observer.observe(img));
-        lazyVideos.forEach(video => observer.observe(video));
     };
+
+    const observer = new IntersectionObserver(lazyLoad, {
+        rootMargin: '0px 0px 200px 0px'
+    });
+
+    lazyImages.forEach(img => observer.observe(img));
+    lazyVideos.forEach(video => observer.observe(video));
+};
+
     </script>
     
 
